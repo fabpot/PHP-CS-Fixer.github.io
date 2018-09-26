@@ -1,0 +1,72 @@
+.hd
+{
+  background-color: #fff
+}
+
+.hd .title_header
+{
+  border-left-color: #a988b2;
+  color: #fbc817;
+}
+
+.intro h2, .box_content h3, .bd h1, a, .bd h3, .bd h2, .bd .content .intro_more li strong
+{
+  color: #93409d;
+}
+
+a:visited
+{
+  color: #93409d;
+}
+
+.important h3
+{
+  color: #bacf29;
+}
+
+#symfony-api #class-description, #symfony-api #method-details h3
+{
+  color: #bacf29 !important;
+}
+
+.links_intro .learn_more
+{
+  background-color: #93409d;
+}
+
+.links_intro .install_now
+{
+  background-color: #ffa20e;
+}
+
+.hd .logo_header
+{
+  font-size: 60px;
+  letter-spacing: -3px;
+  height: auto;
+  padding-bottom: 7px;
+}
+
+.hd .title_header
+{
+  border-left: 0;
+  padding-top: 0;
+  padding-left: 0;
+}
+
+.links_intro
+{
+    float: right;
+    padding-left: 50px;
+    padding-bottom: 20px;
+}
+
+pre
+{
+    background-color: #000;
+}
+
+.hd .illustration, .hd
+{
+    height: 395px;
+}

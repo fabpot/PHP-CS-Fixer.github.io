@@ -1,0 +1,1708 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index, follow, all" />
+    <meta name="Language" content="en" />
+    <meta name="Description" content="PHP Coding Standards Fixer" />
+    <meta name="Keywords" content="php, coding standards" />
+    
+      <title>PHP Coding Standards Fixer</title>
+    
+  <link href="_static/css/reset-min.css" rel="stylesheet" type="text/css" />
+  <link href="_static/css/base.css" rel="stylesheet" type="text/css" />
+  <link href="_static/css/code.css" rel="stylesheet" type="text/css" />
+  <link href="_static/css/colors.css" rel="stylesheet" type="text/css" />
+  <link href="_static/pygments.css" rel="stylesheet" type="text/css" />
+    
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32006827-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script> 
+  </head>
+  <body>
+      <div class="hd">
+        <a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6625ac1f3ee0a12250227cf83ce904423abf351/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png"></a>
+
+        <div class="illustration png_fix">
+          <div class="content">
+            <div class="sensio_product">
+              <img class="png_fix" src="_static/images/sensio-labs-product.png" alt="a Sensio Labs Product" />
+            </div>
+            <div class="clearfix">
+              <div class="logo_header"><a href="/">PHP Coding Standards Fixer</a></div>
+              <h1 class="title_header">
+                <strong>Yogi's BBQ (v2.13.0)</strong> edition
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="bd">
+        <div class="content">
+          <div class="links_intro">
+            <ul>
+              <li>
+                <a href="./download/php-cs-fixer-v2.phar"><img class="install_now png_fix" src="_static/images/install_now.png" alt="Install now" /></a>
+              </li>
+            </ul>
+          </div>
+          <div class="more_intro">
+            
+  <div class="section" id="php-coding-standards-fixer">
+<h1>PHP Coding Standards Fixer<a class="headerlink" href="#php-coding-standards-fixer" title="Permalink to this headline">¶</a></h1>
+<p>The PHP Coding Standards Fixer (PHP CS Fixer) tool fixes your code to follow standards;
+whether you want to follow PHP coding standards as defined in the PSR-1, PSR-2, etc.,
+or other community driven ones like the Symfony one.
+You can <strong>also</strong> define your (teams) style through configuration.</p>
+<p>It can modernize your code (like converting the <code class="docutils literal"><span class="pre">pow</span></code> function to the <code class="docutils literal"><span class="pre">**</span></code> operator on PHP 5.6)
+and (micro) optimize it.</p>
+<p>If you are already using a linter to identify coding standards problems in your
+code, you know that fixing them by hand is tedious, especially on large
+projects. This tool does not only detect them, but also fixes them for you.</p>
+<p>The PHP CS Fixer is maintained on GitHub at <a class="reference external" href="https://github.com/FriendsOfPHP/PHP-CS-Fixer">https://github.com/FriendsOfPHP/PHP-CS-Fixer</a>
+bug reports and ideas about new features are welcome there.</p>
+<p>You can talk to us at <a class="reference external" href="https://gitter.im/PHP-CS-Fixer/Lobby">https://gitter.im/PHP-CS-Fixer/Lobby</a> about the project,
+configuration, possible improvements, ideas and questions, please visit us!</p>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>PHP needs to be a minimum version of PHP 5.6.0.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="locally">
+<h3>Locally<a class="headerlink" href="#locally" title="Permalink to this headline">¶</a></h3>
+<p>Download the <a class="reference external" href="https://cs.sensiolabs.org/download/php-cs-fixer-v2.phar">php-cs-fixer.phar</a> file and store it somewhere on your computer.</p>
+</div>
+<div class="section" id="globally-manual">
+<h3>Globally (manual)<a class="headerlink" href="#globally-manual" title="Permalink to this headline">¶</a></h3>
+<p>You can run these commands to easily access latest <code class="docutils literal"><span class="pre">php-cs-fixer</span></code> from anywhere on
+your system:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ wget https://cs.sensiolabs.org/download/php-cs-fixer-v2.phar -O php-cs-fixer
+</pre></div>
+</div>
+<p>or with specified version:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v2.13.0/php-cs-fixer.phar -O php-cs-fixer
+</pre></div>
+</div>
+<p>or with curl:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -L https://cs.sensiolabs.org/download/php-cs-fixer-v2.phar -o php-cs-fixer
+</pre></div>
+</div>
+<p>then:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo chmod a+x php-cs-fixer
+$ sudo mv php-cs-fixer /usr/local/bin/php-cs-fixer
+</pre></div>
+</div>
+<p>Then, just run <code class="docutils literal"><span class="pre">php-cs-fixer</span></code>.</p>
+</div>
+<div class="section" id="globally-composer">
+<h3>Globally (Composer)<a class="headerlink" href="#globally-composer" title="Permalink to this headline">¶</a></h3>
+<p>To install PHP CS Fixer, <a class="reference external" href="https://getcomposer.org/download/">install Composer</a> and issue the following command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ composer global require friendsofphp/php-cs-fixer
+</pre></div>
+</div>
+<p>Then make sure you have the global Composer binaries directory in your <code class="docutils literal"><span class="pre">PATH</span></code>. This directory is platform-dependent, see <a class="reference external" href="https://getcomposer.org/doc/03-cli.md#composer-home">Composer documentation</a> for details. Example for some Unix systems:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PATH</span><span class="s2">:</span><span class="nv">$HOME</span><span class="s2">/.composer/vendor/bin&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="globally-homebrew">
+<h3>Globally (homebrew)<a class="headerlink" href="#globally-homebrew" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ brew install php-cs-fixer
+</pre></div>
+</div>
+</div>
+<div class="section" id="locally-phive">
+<h3>Locally (PHIVE)<a class="headerlink" href="#locally-phive" title="Permalink to this headline">¶</a></h3>
+<p>Install <a class="reference external" href="https://phar.io">PHIVE</a> and issue the following command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ phive install php-cs-fixer <span class="c1"># use `--global` for global install</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="update">
+<h2>Update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Locally<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">self-update</span></code> command tries to update <code class="docutils literal"><span class="pre">php-cs-fixer</span></code> itself:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ php php-cs-fixer.phar self-update
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Globally (manual)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>You can update <code class="docutils literal"><span class="pre">php-cs-fixer</span></code> through this command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo php-cs-fixer self-update
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>Globally (Composer)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>You can update <code class="docutils literal"><span class="pre">php-cs-fixer</span></code> through this command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ./composer.phar global update friendsofphp/php-cs-fixer
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>Globally (homebrew)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>You can update <code class="docutils literal"><span class="pre">php-cs-fixer</span></code> through this command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ brew upgrade php-cs-fixer
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>Locally (PHIVE)<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ phive update php-cs-fixer
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">fix</span></code> command tries to fix as much coding standards
+problems as possible on a given file or files in a given directory and its subdirectories:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ php php-cs-fixer.phar fix /path/to/dir
+$ php php-cs-fixer.phar fix /path/to/file
+</pre></div>
+</div>
+<p>By default <code class="docutils literal"><span class="pre">--path-mode</span></code> is set to <code class="docutils literal"><span class="pre">override</span></code>, which means, that if you specify the path to a file or a directory via
+command arguments, then the paths provided to a <code class="docutils literal"><span class="pre">Finder</span></code> in config file will be ignored. You can use <code class="docutils literal"><span class="pre">--path-mode=intersection</span></code>
+to merge paths from the config file and from the argument:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ php php-cs-fixer.phar fix --path-mode<span class="o">=</span>intersection /path/to/dir
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">--format</span></code> option for the output format. Supported formats are <code class="docutils literal"><span class="pre">txt</span></code> (default one), <code class="docutils literal"><span class="pre">json</span></code>, <code class="docutils literal"><span class="pre">xml</span></code>, <code class="docutils literal"><span class="pre">checkstyle</span></code> and <code class="docutils literal"><span class="pre">junit</span></code>.</p>
+<p>NOTE: the output for the following formats are generated in accordance with XML schemas</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">junit</span></code> follows the <a class="reference external" href="/doc/junit-10.xsd">JUnit xml schema from Jenkins</a></li>
+<li><code class="docutils literal"><span class="pre">checkstyle</span></code> follows the common <a class="reference external" href="/doc/checkstyle.xsd">“checkstyle” xml schema</a></li>
+</ul>
+<p>The <code class="docutils literal"><span class="pre">--verbose</span></code> option will show the applied rules. When using the <code class="docutils literal"><span class="pre">txt</span></code> format it will also displays progress notifications.</p>
+<p>The <code class="docutils literal"><span class="pre">--rules</span></code> option limits the rules to apply on the
+project:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ php php-cs-fixer.phar fix /path/to/project --rules<span class="o">=</span>@PSR2
+</pre></div>
+</div>
+<p>By default the PSR1 and PSR2 rules are used.</p>
+<p>The <code class="docutils literal"><span class="pre">--rules</span></code> option lets you choose the exact rules to
+apply (the rule names must be separated by a comma):</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ php php-cs-fixer.phar fix /path/to/dir --rules<span class="o">=</span>line_ending,full_opening_tag,indentation_type
+</pre></div>
+</div>
+<p>You can also blacklist the rules you don’t want by placing a dash in front of the rule name, if this is more convenient,
+using <code class="docutils literal"><span class="pre">-name_of_fixer</span></code>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ php php-cs-fixer.phar fix /path/to/dir --rules<span class="o">=</span>-full_opening_tag,-indentation_type
+</pre></div>
+</div>
+<p>When using combinations of exact and blacklist rules, applying exact rules along with above blacklisted results:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ php php-cs-fixer.phar fix /path/to/project --rules<span class="o">=</span>@Symfony,-@PSR1,-blank_line_before_statement,strict_comparison
+</pre></div>
+</div>
+<p>Complete configuration for rules can be supplied using a <code class="docutils literal"><span class="pre">json</span></code> formatted string.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ php php-cs-fixer.phar fix /path/to/project --rules<span class="o">=</span><span class="s1">&#39;{&quot;concat_space&quot;: {&quot;spacing&quot;: &quot;none&quot;}}&#39;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">--dry-run</span></code> flag will run the fixer without making changes to your files.</p>
+<p>The <code class="docutils literal"><span class="pre">--diff</span></code> flag can be used to let the fixer output all the changes it makes.</p>
+<p>The <code class="docutils literal"><span class="pre">--diff-format</span></code> option allows to specify in which format the fixer should output the changes it makes:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">udiff</span></code>: unified diff format;</li>
+<li><code class="docutils literal"><span class="pre">sbd</span></code>: Sebastianbergmann/diff format (default when using <cite>–diff</cite> without specifying <cite>diff-format</cite>).</li>
+</ul>
+<p>The <code class="docutils literal"><span class="pre">--allow-risky</span></code> option (pass <code class="docutils literal"><span class="pre">yes</span></code> or <code class="docutils literal"><span class="pre">no</span></code>) allows you to set whether risky rules may run. Default value is taken from config file.
+Risky rule is a rule, which could change code behaviour. By default no risky rules are run.</p>
+<p>The <code class="docutils literal"><span class="pre">--stop-on-violation</span></code> flag stops the execution upon first file that needs to be fixed.</p>
+<p>The <code class="docutils literal"><span class="pre">--show-progress</span></code> option allows you to choose the way process progress is rendered:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">none</span></code>: disables progress output;</li>
+<li><code class="docutils literal"><span class="pre">run-in</span></code>: [deprecated] simple single-line progress output;</li>
+<li><code class="docutils literal"><span class="pre">estimating</span></code>: [deprecated] multiline progress output with number of files and percentage on each line. Note that with this option, the files list is evaluated before processing to get the total number of files and then kept in memory to avoid using the file iterator twice. This has an impact on memory usage so using this option is not recommended on very large projects;</li>
+<li><code class="docutils literal"><span class="pre">estimating-max</span></code>: [deprecated] same as <code class="docutils literal"><span class="pre">dots</span></code>;</li>
+<li><code class="docutils literal"><span class="pre">dots</span></code>: same as <code class="docutils literal"><span class="pre">estimating</span></code> but using all terminal columns instead of default 80.</li>
+</ul>
+<p>If the option is not provided, it defaults to <code class="docutils literal"><span class="pre">run-in</span></code> unless a config file that disables output is used, in which case it defaults to <code class="docutils literal"><span class="pre">none</span></code>. This option has no effect if the verbosity of the command is less than <code class="docutils literal"><span class="pre">verbose</span></code>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ php php-cs-fixer.phar fix --verbose --show-progress<span class="o">=</span>estimating
+</pre></div>
+</div>
+<p>The command can also read from standard input, in which case it won’t
+automatically fix anything:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cat foo.php <span class="p">|</span> php php-cs-fixer.phar fix --diff -
+</pre></div>
+</div>
+<p>Finally, if you don’t need BC kept on CLI level, you might use <cite>PHP_CS_FIXER_FUTURE_MODE</cite> to start using options that
+would be default in next MAJOR release (unified differ, estimating, full-width progress indicator):</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nv">PHP_CS_FIXER_FUTURE_MODE</span><span class="o">=</span><span class="m">1</span> php php-cs-fixer.phar fix -v --diff
+</pre></div>
+</div>
+<p>Choose from the list of available rules:</p>
+<ul>
+<li><p class="first"><strong>align_multiline_comment</strong></p>
+<p>Each line of multi-line DocComments must have an asterisk [PSR-5] and
+must be aligned with the first one.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">comment_type</span></code> (<code class="docutils literal"><span class="pre">'all_multiline'</span></code>, <code class="docutils literal"><span class="pre">'phpdocs_like'</span></code>, <code class="docutils literal"><span class="pre">'phpdocs_only'</span></code>): whether
+to fix PHPDoc comments only (<code class="docutils literal"><span class="pre">phpdocs_only</span></code>), any multi-line comment
+whose lines all start with an asterisk (<code class="docutils literal"><span class="pre">phpdocs_like</span></code>) or any
+multi-line comment (<code class="docutils literal"><span class="pre">all_multiline</span></code>); defaults to <code class="docutils literal"><span class="pre">'phpdocs_only'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>array_indentation</strong></p>
+<p>Each element of an array must be indented exactly once.</p>
+</li>
+<li><p class="first"><strong>array_syntax</strong></p>
+<p>PHP arrays should be declared using the configured syntax.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">syntax</span></code> (<code class="docutils literal"><span class="pre">'long'</span></code>, <code class="docutils literal"><span class="pre">'short'</span></code>): whether to use the <code class="docutils literal"><span class="pre">long</span></code> or <code class="docutils literal"><span class="pre">short</span></code> array
+syntax; defaults to <code class="docutils literal"><span class="pre">'long'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>backtick_to_shell_exec</strong></p>
+<p>Converts backtick operators to <code class="docutils literal"><span class="pre">shell_exec</span></code> calls.</p>
+</li>
+<li><p class="first"><strong>binary_operator_spaces</strong> [&#64;Symfony]</p>
+<p>Binary operators should be surrounded by space as configured.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">align_double_arrow</span></code> (<code class="docutils literal"><span class="pre">false</span></code>, <code class="docutils literal"><span class="pre">null</span></code>, <code class="docutils literal"><span class="pre">true</span></code>): whether to apply, remove or
+ignore double arrows alignment; defaults to <code class="docutils literal"><span class="pre">false</span></code>. DEPRECATED: use
+options <code class="docutils literal"><span class="pre">operators</span></code> and <code class="docutils literal"><span class="pre">default</span></code> instead</li>
+<li><code class="docutils literal"><span class="pre">align_equals</span></code> (<code class="docutils literal"><span class="pre">false</span></code>, <code class="docutils literal"><span class="pre">null</span></code>, <code class="docutils literal"><span class="pre">true</span></code>): whether to apply, remove or ignore
+equals alignment; defaults to <code class="docutils literal"><span class="pre">false</span></code>. DEPRECATED: use options
+<code class="docutils literal"><span class="pre">operators</span></code> and <code class="docutils literal"><span class="pre">default</span></code> instead</li>
+<li><code class="docutils literal"><span class="pre">default</span></code> (<code class="docutils literal"><span class="pre">'align'</span></code>, <code class="docutils literal"><span class="pre">'align_single_space'</span></code>, <code class="docutils literal"><span class="pre">'align_single_space_minimal'</span></code>,
+<code class="docutils literal"><span class="pre">'no_space'</span></code>, <code class="docutils literal"><span class="pre">'single_space'</span></code>, <code class="docutils literal"><span class="pre">null</span></code>): default fix strategy; defaults to
+<code class="docutils literal"><span class="pre">'single_space'</span></code></li>
+<li><code class="docutils literal"><span class="pre">operators</span></code> (<code class="docutils literal"><span class="pre">array</span></code>): dictionary of <code class="docutils literal"><span class="pre">binary</span> <span class="pre">operator</span></code> =&gt; <code class="docutils literal"><span class="pre">fix</span> <span class="pre">strategy</span></code>
+values that differ from the default strategy; defaults to <code class="docutils literal"><span class="pre">[]</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>blank_line_after_namespace</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>There MUST be one blank line after the namespace declaration.</p>
+</li>
+<li><p class="first"><strong>blank_line_after_opening_tag</strong> [&#64;Symfony]</p>
+<p>Ensure there is no code on the same line as the PHP open tag and it is
+followed by a blank line.</p>
+</li>
+<li><p class="first"><strong>blank_line_before_return</strong></p>
+<p>An empty line feed should precede a return statement. DEPRECATED: use
+<code class="docutils literal"><span class="pre">blank_line_before_statement</span></code> instead.</p>
+</li>
+<li><p class="first"><strong>blank_line_before_statement</strong> [&#64;Symfony]</p>
+<p>An empty line feed must precede any configured statement.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">statements</span></code> (a subset of <code class="docutils literal"><span class="pre">['break',</span> <span class="pre">'case',</span> <span class="pre">'continue',</span> <span class="pre">'declare',</span>
+<span class="pre">'default',</span> <span class="pre">'die',</span> <span class="pre">'do',</span> <span class="pre">'exit',</span> <span class="pre">'for',</span> <span class="pre">'foreach',</span> <span class="pre">'goto',</span> <span class="pre">'if',</span>
+<span class="pre">'include',</span> <span class="pre">'include_once',</span> <span class="pre">'require',</span> <span class="pre">'require_once',</span> <span class="pre">'return',</span>
+<span class="pre">'switch',</span> <span class="pre">'throw',</span> <span class="pre">'try',</span> <span class="pre">'while',</span> <span class="pre">'yield']</span></code>): list of statements which
+must be preceded by an empty line; defaults to <code class="docutils literal"><span class="pre">['break',</span> <span class="pre">'continue',</span>
+<span class="pre">'declare',</span> <span class="pre">'return',</span> <span class="pre">'throw',</span> <span class="pre">'try']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>braces</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>The body of each structure MUST be enclosed by braces. Braces should be
+properly placed. Body of braces should be properly indented.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">allow_single_line_closure</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether single line lambda notation
+should be allowed; defaults to <code class="docutils literal"><span class="pre">false</span></code></li>
+<li><code class="docutils literal"><span class="pre">position_after_anonymous_constructs</span></code> (<code class="docutils literal"><span class="pre">'next'</span></code>, <code class="docutils literal"><span class="pre">'same'</span></code>): whether the
+opening brace should be placed on “next” or “same” line after anonymous
+constructs (anonymous classes and lambda functions); defaults to <code class="docutils literal"><span class="pre">'same'</span></code></li>
+<li><code class="docutils literal"><span class="pre">position_after_control_structures</span></code> (<code class="docutils literal"><span class="pre">'next'</span></code>, <code class="docutils literal"><span class="pre">'same'</span></code>): whether the opening
+brace should be placed on “next” or “same” line after control
+structures; defaults to <code class="docutils literal"><span class="pre">'same'</span></code></li>
+<li><code class="docutils literal"><span class="pre">position_after_functions_and_oop_constructs</span></code> (<code class="docutils literal"><span class="pre">'next'</span></code>, <code class="docutils literal"><span class="pre">'same'</span></code>): whether
+the opening brace should be placed on “next” or “same” line after
+classy constructs (non-anonymous classes, interfaces, traits, methods
+and non-lambda functions); defaults to <code class="docutils literal"><span class="pre">'next'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>cast_spaces</strong> [&#64;Symfony]</p>
+<p>A single space or none should be between cast and variable.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">space</span></code> (<code class="docutils literal"><span class="pre">'none'</span></code>, <code class="docutils literal"><span class="pre">'single'</span></code>): spacing to apply between cast and variable;
+defaults to <code class="docutils literal"><span class="pre">'single'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>class_attributes_separation</strong> [&#64;Symfony]</p>
+<p>Class, trait and interface elements must be separated with one blank
+line.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">elements</span></code> (a subset of <code class="docutils literal"><span class="pre">['const',</span> <span class="pre">'method',</span> <span class="pre">'property']</span></code>): list of classy
+elements; ‘const’, ‘method’, ‘property’; defaults to <code class="docutils literal"><span class="pre">['const',</span>
+<span class="pre">'method',</span> <span class="pre">'property']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>class_definition</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>Whitespace around the keywords of a class, trait or interfaces
+definition should be one space.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">multi_line_extends_each_single_line</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether definitions should
+be multiline; defaults to <code class="docutils literal"><span class="pre">false</span></code>; DEPRECATED alias:
+<code class="docutils literal"><span class="pre">multiLineExtendsEachSingleLine</span></code></li>
+<li><code class="docutils literal"><span class="pre">single_item_single_line</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether definitions should be single
+line when including a single item; defaults to <code class="docutils literal"><span class="pre">false</span></code>; DEPRECATED alias:
+<code class="docutils literal"><span class="pre">singleItemSingleLine</span></code></li>
+<li><code class="docutils literal"><span class="pre">single_line</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether definitions should be single line; defaults
+to <code class="docutils literal"><span class="pre">false</span></code>; DEPRECATED alias: <code class="docutils literal"><span class="pre">singleLine</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>class_keyword_remove</strong></p>
+<p>Converts <code class="docutils literal"><span class="pre">::class</span></code> keywords to FQCN strings.</p>
+</li>
+<li><p class="first"><strong>combine_consecutive_issets</strong></p>
+<p>Using <code class="docutils literal"><span class="pre">isset($var)</span> <span class="pre">&amp;&amp;</span></code> multiple times should be done in one call.</p>
+</li>
+<li><p class="first"><strong>combine_consecutive_unsets</strong></p>
+<p>Calling <code class="docutils literal"><span class="pre">unset</span></code> on multiple items should be done in one call.</p>
+</li>
+<li><p class="first"><strong>combine_nested_dirname</strong> [&#64;PHP70Migration:risky, &#64;PHP71Migration:risky]</p>
+<p>Replace multiple nested calls of <code class="docutils literal"><span class="pre">dirname</span></code> by only one call with second
+<code class="docutils literal"><span class="pre">$level</span></code> parameter. Requires PHP &gt;= 7.0.</p>
+<p><em>Risky rule: risky when the function ``dirname`` is overridden.</em></p>
+</li>
+<li><p class="first"><strong>comment_to_phpdoc</strong></p>
+<p>Comments with annotation should be docblock when used on structural
+elements.</p>
+<p><em>Risky rule: risky as new docblocks might mean more, e.g. a Doctrine entity might have a new column in database.</em></p>
+</li>
+<li><p class="first"><strong>compact_nullable_typehint</strong></p>
+<p>Remove extra spaces in a nullable typehint.</p>
+</li>
+<li><p class="first"><strong>concat_space</strong> [&#64;Symfony]</p>
+<p>Concatenation should be spaced according configuration.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">spacing</span></code> (<code class="docutils literal"><span class="pre">'none'</span></code>, <code class="docutils literal"><span class="pre">'one'</span></code>): spacing to apply around concatenation operator;
+defaults to <code class="docutils literal"><span class="pre">'none'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>date_time_immutable</strong></p>
+<p>Class <code class="docutils literal"><span class="pre">DateTimeImmutable</span></code> should be used instead of <code class="docutils literal"><span class="pre">DateTime</span></code>.</p>
+<p><em>Risky rule: risky when the code relies on modifying ``DateTime`` objects or if any of the ``date_create*`` functions are overridden.</em></p>
+</li>
+<li><p class="first"><strong>declare_equal_normalize</strong> [&#64;Symfony]</p>
+<p>Equal sign in declare statement should be surrounded by spaces or not
+following configuration.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">space</span></code> (<code class="docutils literal"><span class="pre">'none'</span></code>, <code class="docutils literal"><span class="pre">'single'</span></code>): spacing to apply around the equal sign;
+defaults to <code class="docutils literal"><span class="pre">'none'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>declare_strict_types</strong> [&#64;PHP70Migration:risky, &#64;PHP71Migration:risky]</p>
+<p>Force strict types declaration in all files. Requires PHP &gt;= 7.0.</p>
+<p><em>Risky rule: forcing strict types will stop non strict code from working.</em></p>
+</li>
+<li><p class="first"><strong>dir_constant</strong> [&#64;Symfony:risky]</p>
+<p>Replaces <code class="docutils literal"><span class="pre">dirname(__FILE__)</span></code> expression with equivalent <code class="docutils literal"><span class="pre">__DIR__</span></code>
+constant.</p>
+<p><em>Risky rule: risky when the function ``dirname`` is overridden.</em></p>
+</li>
+<li><p class="first"><strong>doctrine_annotation_array_assignment</strong> [&#64;DoctrineAnnotation]</p>
+<p>Doctrine annotations must use configured operator for assignment in
+arrays.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">ignored_tags</span></code> (<code class="docutils literal"><span class="pre">array</span></code>): list of tags that must not be treated as Doctrine
+Annotations; defaults to <code class="docutils literal"><span class="pre">['abstract',</span> <span class="pre">'access',</span> <span class="pre">'code',</span> <span class="pre">'deprec',</span>
+<span class="pre">'encode',</span> <span class="pre">'exception',</span> <span class="pre">'final',</span> <span class="pre">'ingroup',</span> <span class="pre">'inheritdoc',</span> <span class="pre">'inheritDoc',</span>
+<span class="pre">'magic',</span> <span class="pre">'name',</span> <span class="pre">'toc',</span> <span class="pre">'tutorial',</span> <span class="pre">'private',</span> <span class="pre">'static',</span> <span class="pre">'staticvar',</span>
+<span class="pre">'staticVar',</span> <span class="pre">'throw',</span> <span class="pre">'api',</span> <span class="pre">'author',</span> <span class="pre">'category',</span> <span class="pre">'copyright',</span>
+<span class="pre">'deprecated',</span> <span class="pre">'example',</span> <span class="pre">'filesource',</span> <span class="pre">'global',</span> <span class="pre">'ignore',</span> <span class="pre">'internal',</span>
+<span class="pre">'license',</span> <span class="pre">'link',</span> <span class="pre">'method',</span> <span class="pre">'package',</span> <span class="pre">'param',</span> <span class="pre">'property',</span>
+<span class="pre">'property-read',</span> <span class="pre">'property-write',</span> <span class="pre">'return',</span> <span class="pre">'see',</span> <span class="pre">'since',</span> <span class="pre">'source',</span>
+<span class="pre">'subpackage',</span> <span class="pre">'throws',</span> <span class="pre">'todo',</span> <span class="pre">'TODO',</span> <span class="pre">'usedBy',</span> <span class="pre">'uses',</span> <span class="pre">'var',</span>
+<span class="pre">'version',</span> <span class="pre">'after',</span> <span class="pre">'afterClass',</span> <span class="pre">'backupGlobals',</span>
+<span class="pre">'backupStaticAttributes',</span> <span class="pre">'before',</span> <span class="pre">'beforeClass',</span>
+<span class="pre">'codeCoverageIgnore',</span> <span class="pre">'codeCoverageIgnoreStart',</span>
+<span class="pre">'codeCoverageIgnoreEnd',</span> <span class="pre">'covers',</span> <span class="pre">'coversDefaultClass',</span>
+<span class="pre">'coversNothing',</span> <span class="pre">'dataProvider',</span> <span class="pre">'depends',</span> <span class="pre">'expectedException',</span>
+<span class="pre">'expectedExceptionCode',</span> <span class="pre">'expectedExceptionMessage',</span>
+<span class="pre">'expectedExceptionMessageRegExp',</span> <span class="pre">'group',</span> <span class="pre">'large',</span> <span class="pre">'medium',</span>
+<span class="pre">'preserveGlobalState',</span> <span class="pre">'requires',</span> <span class="pre">'runTestsInSeparateProcesses',</span>
+<span class="pre">'runInSeparateProcess',</span> <span class="pre">'small',</span> <span class="pre">'test',</span> <span class="pre">'testdox',</span> <span class="pre">'ticket',</span> <span class="pre">'uses',</span>
+<span class="pre">'SuppressWarnings',</span> <span class="pre">'noinspection',</span> <span class="pre">'package_version',</span> <span class="pre">'enduml',</span>
+<span class="pre">'startuml',</span> <span class="pre">'fix',</span> <span class="pre">'FIXME',</span> <span class="pre">'fixme',</span> <span class="pre">'override']</span></code></li>
+<li><code class="docutils literal"><span class="pre">operator</span></code> (<code class="docutils literal"><span class="pre">':'</span></code>, <code class="docutils literal"><span class="pre">'='</span></code>): the operator to use; defaults to <code class="docutils literal"><span class="pre">'='</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>doctrine_annotation_braces</strong> [&#64;DoctrineAnnotation]</p>
+<p>Doctrine annotations without arguments must use the configured syntax.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">ignored_tags</span></code> (<code class="docutils literal"><span class="pre">array</span></code>): list of tags that must not be treated as Doctrine
+Annotations; defaults to <code class="docutils literal"><span class="pre">['abstract',</span> <span class="pre">'access',</span> <span class="pre">'code',</span> <span class="pre">'deprec',</span>
+<span class="pre">'encode',</span> <span class="pre">'exception',</span> <span class="pre">'final',</span> <span class="pre">'ingroup',</span> <span class="pre">'inheritdoc',</span> <span class="pre">'inheritDoc',</span>
+<span class="pre">'magic',</span> <span class="pre">'name',</span> <span class="pre">'toc',</span> <span class="pre">'tutorial',</span> <span class="pre">'private',</span> <span class="pre">'static',</span> <span class="pre">'staticvar',</span>
+<span class="pre">'staticVar',</span> <span class="pre">'throw',</span> <span class="pre">'api',</span> <span class="pre">'author',</span> <span class="pre">'category',</span> <span class="pre">'copyright',</span>
+<span class="pre">'deprecated',</span> <span class="pre">'example',</span> <span class="pre">'filesource',</span> <span class="pre">'global',</span> <span class="pre">'ignore',</span> <span class="pre">'internal',</span>
+<span class="pre">'license',</span> <span class="pre">'link',</span> <span class="pre">'method',</span> <span class="pre">'package',</span> <span class="pre">'param',</span> <span class="pre">'property',</span>
+<span class="pre">'property-read',</span> <span class="pre">'property-write',</span> <span class="pre">'return',</span> <span class="pre">'see',</span> <span class="pre">'since',</span> <span class="pre">'source',</span>
+<span class="pre">'subpackage',</span> <span class="pre">'throws',</span> <span class="pre">'todo',</span> <span class="pre">'TODO',</span> <span class="pre">'usedBy',</span> <span class="pre">'uses',</span> <span class="pre">'var',</span>
+<span class="pre">'version',</span> <span class="pre">'after',</span> <span class="pre">'afterClass',</span> <span class="pre">'backupGlobals',</span>
+<span class="pre">'backupStaticAttributes',</span> <span class="pre">'before',</span> <span class="pre">'beforeClass',</span>
+<span class="pre">'codeCoverageIgnore',</span> <span class="pre">'codeCoverageIgnoreStart',</span>
+<span class="pre">'codeCoverageIgnoreEnd',</span> <span class="pre">'covers',</span> <span class="pre">'coversDefaultClass',</span>
+<span class="pre">'coversNothing',</span> <span class="pre">'dataProvider',</span> <span class="pre">'depends',</span> <span class="pre">'expectedException',</span>
+<span class="pre">'expectedExceptionCode',</span> <span class="pre">'expectedExceptionMessage',</span>
+<span class="pre">'expectedExceptionMessageRegExp',</span> <span class="pre">'group',</span> <span class="pre">'large',</span> <span class="pre">'medium',</span>
+<span class="pre">'preserveGlobalState',</span> <span class="pre">'requires',</span> <span class="pre">'runTestsInSeparateProcesses',</span>
+<span class="pre">'runInSeparateProcess',</span> <span class="pre">'small',</span> <span class="pre">'test',</span> <span class="pre">'testdox',</span> <span class="pre">'ticket',</span> <span class="pre">'uses',</span>
+<span class="pre">'SuppressWarnings',</span> <span class="pre">'noinspection',</span> <span class="pre">'package_version',</span> <span class="pre">'enduml',</span>
+<span class="pre">'startuml',</span> <span class="pre">'fix',</span> <span class="pre">'FIXME',</span> <span class="pre">'fixme',</span> <span class="pre">'override']</span></code></li>
+<li><code class="docutils literal"><span class="pre">syntax</span></code> (<code class="docutils literal"><span class="pre">'with_braces'</span></code>, <code class="docutils literal"><span class="pre">'without_braces'</span></code>): whether to add or remove
+braces; defaults to <code class="docutils literal"><span class="pre">'without_braces'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>doctrine_annotation_indentation</strong> [&#64;DoctrineAnnotation]</p>
+<p>Doctrine annotations must be indented with four spaces.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">ignored_tags</span></code> (<code class="docutils literal"><span class="pre">array</span></code>): list of tags that must not be treated as Doctrine
+Annotations; defaults to <code class="docutils literal"><span class="pre">['abstract',</span> <span class="pre">'access',</span> <span class="pre">'code',</span> <span class="pre">'deprec',</span>
+<span class="pre">'encode',</span> <span class="pre">'exception',</span> <span class="pre">'final',</span> <span class="pre">'ingroup',</span> <span class="pre">'inheritdoc',</span> <span class="pre">'inheritDoc',</span>
+<span class="pre">'magic',</span> <span class="pre">'name',</span> <span class="pre">'toc',</span> <span class="pre">'tutorial',</span> <span class="pre">'private',</span> <span class="pre">'static',</span> <span class="pre">'staticvar',</span>
+<span class="pre">'staticVar',</span> <span class="pre">'throw',</span> <span class="pre">'api',</span> <span class="pre">'author',</span> <span class="pre">'category',</span> <span class="pre">'copyright',</span>
+<span class="pre">'deprecated',</span> <span class="pre">'example',</span> <span class="pre">'filesource',</span> <span class="pre">'global',</span> <span class="pre">'ignore',</span> <span class="pre">'internal',</span>
+<span class="pre">'license',</span> <span class="pre">'link',</span> <span class="pre">'method',</span> <span class="pre">'package',</span> <span class="pre">'param',</span> <span class="pre">'property',</span>
+<span class="pre">'property-read',</span> <span class="pre">'property-write',</span> <span class="pre">'return',</span> <span class="pre">'see',</span> <span class="pre">'since',</span> <span class="pre">'source',</span>
+<span class="pre">'subpackage',</span> <span class="pre">'throws',</span> <span class="pre">'todo',</span> <span class="pre">'TODO',</span> <span class="pre">'usedBy',</span> <span class="pre">'uses',</span> <span class="pre">'var',</span>
+<span class="pre">'version',</span> <span class="pre">'after',</span> <span class="pre">'afterClass',</span> <span class="pre">'backupGlobals',</span>
+<span class="pre">'backupStaticAttributes',</span> <span class="pre">'before',</span> <span class="pre">'beforeClass',</span>
+<span class="pre">'codeCoverageIgnore',</span> <span class="pre">'codeCoverageIgnoreStart',</span>
+<span class="pre">'codeCoverageIgnoreEnd',</span> <span class="pre">'covers',</span> <span class="pre">'coversDefaultClass',</span>
+<span class="pre">'coversNothing',</span> <span class="pre">'dataProvider',</span> <span class="pre">'depends',</span> <span class="pre">'expectedException',</span>
+<span class="pre">'expectedExceptionCode',</span> <span class="pre">'expectedExceptionMessage',</span>
+<span class="pre">'expectedExceptionMessageRegExp',</span> <span class="pre">'group',</span> <span class="pre">'large',</span> <span class="pre">'medium',</span>
+<span class="pre">'preserveGlobalState',</span> <span class="pre">'requires',</span> <span class="pre">'runTestsInSeparateProcesses',</span>
+<span class="pre">'runInSeparateProcess',</span> <span class="pre">'small',</span> <span class="pre">'test',</span> <span class="pre">'testdox',</span> <span class="pre">'ticket',</span> <span class="pre">'uses',</span>
+<span class="pre">'SuppressWarnings',</span> <span class="pre">'noinspection',</span> <span class="pre">'package_version',</span> <span class="pre">'enduml',</span>
+<span class="pre">'startuml',</span> <span class="pre">'fix',</span> <span class="pre">'FIXME',</span> <span class="pre">'fixme',</span> <span class="pre">'override']</span></code></li>
+<li><code class="docutils literal"><span class="pre">indent_mixed_lines</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether to indent lines that have content
+before closing parenthesis; defaults to <code class="docutils literal"><span class="pre">false</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>doctrine_annotation_spaces</strong> [&#64;DoctrineAnnotation]</p>
+<p>Fixes spaces in Doctrine annotations.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">after_argument_assignments</span></code> (<code class="docutils literal"><span class="pre">null</span></code>, <code class="docutils literal"><span class="pre">bool</span></code>): whether to add, remove or
+ignore spaces after argument assignment operator; defaults to <code class="docutils literal"><span class="pre">false</span></code></li>
+<li><code class="docutils literal"><span class="pre">after_array_assignments_colon</span></code> (<code class="docutils literal"><span class="pre">null</span></code>, <code class="docutils literal"><span class="pre">bool</span></code>): whether to add, remove or
+ignore spaces after array assignment <code class="docutils literal"><span class="pre">:</span></code> operator; defaults to <code class="docutils literal"><span class="pre">true</span></code></li>
+<li><code class="docutils literal"><span class="pre">after_array_assignments_equals</span></code> (<code class="docutils literal"><span class="pre">null</span></code>, <code class="docutils literal"><span class="pre">bool</span></code>): whether to add, remove or
+ignore spaces after array assignment <code class="docutils literal"><span class="pre">=</span></code> operator; defaults to <code class="docutils literal"><span class="pre">true</span></code></li>
+<li><code class="docutils literal"><span class="pre">around_argument_assignments</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether to fix spaces around
+argument assignment operator; defaults to <code class="docutils literal"><span class="pre">true</span></code>. DEPRECATED: use options
+<code class="docutils literal"><span class="pre">before_argument_assignments</span></code> and <code class="docutils literal"><span class="pre">after_argument_assignments</span></code> instead</li>
+<li><code class="docutils literal"><span class="pre">around_array_assignments</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether to fix spaces around array
+assignment operators; defaults to <code class="docutils literal"><span class="pre">true</span></code>. DEPRECATED: use options
+<code class="docutils literal"><span class="pre">before_array_assignments_equals</span></code>, <code class="docutils literal"><span class="pre">after_array_assignments_equals</span></code>,
+<code class="docutils literal"><span class="pre">before_array_assignments_colon</span></code> and <code class="docutils literal"><span class="pre">after_array_assignments_colon</span></code>
+instead</li>
+<li><code class="docutils literal"><span class="pre">around_commas</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether to fix spaces around commas; defaults to
+<code class="docutils literal"><span class="pre">true</span></code></li>
+<li><code class="docutils literal"><span class="pre">around_parentheses</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether to fix spaces around parentheses;
+defaults to <code class="docutils literal"><span class="pre">true</span></code></li>
+<li><code class="docutils literal"><span class="pre">before_argument_assignments</span></code> (<code class="docutils literal"><span class="pre">null</span></code>, <code class="docutils literal"><span class="pre">bool</span></code>): whether to add, remove or
+ignore spaces before argument assignment operator; defaults to <code class="docutils literal"><span class="pre">false</span></code></li>
+<li><code class="docutils literal"><span class="pre">before_array_assignments_colon</span></code> (<code class="docutils literal"><span class="pre">null</span></code>, <code class="docutils literal"><span class="pre">bool</span></code>): whether to add, remove or
+ignore spaces before array <code class="docutils literal"><span class="pre">:</span></code> assignment operator; defaults to <code class="docutils literal"><span class="pre">true</span></code></li>
+<li><code class="docutils literal"><span class="pre">before_array_assignments_equals</span></code> (<code class="docutils literal"><span class="pre">null</span></code>, <code class="docutils literal"><span class="pre">bool</span></code>): whether to add, remove or
+ignore spaces before array <code class="docutils literal"><span class="pre">=</span></code> assignment operator; defaults to <code class="docutils literal"><span class="pre">true</span></code></li>
+<li><code class="docutils literal"><span class="pre">ignored_tags</span></code> (<code class="docutils literal"><span class="pre">array</span></code>): list of tags that must not be treated as Doctrine
+Annotations; defaults to <code class="docutils literal"><span class="pre">['abstract',</span> <span class="pre">'access',</span> <span class="pre">'code',</span> <span class="pre">'deprec',</span>
+<span class="pre">'encode',</span> <span class="pre">'exception',</span> <span class="pre">'final',</span> <span class="pre">'ingroup',</span> <span class="pre">'inheritdoc',</span> <span class="pre">'inheritDoc',</span>
+<span class="pre">'magic',</span> <span class="pre">'name',</span> <span class="pre">'toc',</span> <span class="pre">'tutorial',</span> <span class="pre">'private',</span> <span class="pre">'static',</span> <span class="pre">'staticvar',</span>
+<span class="pre">'staticVar',</span> <span class="pre">'throw',</span> <span class="pre">'api',</span> <span class="pre">'author',</span> <span class="pre">'category',</span> <span class="pre">'copyright',</span>
+<span class="pre">'deprecated',</span> <span class="pre">'example',</span> <span class="pre">'filesource',</span> <span class="pre">'global',</span> <span class="pre">'ignore',</span> <span class="pre">'internal',</span>
+<span class="pre">'license',</span> <span class="pre">'link',</span> <span class="pre">'method',</span> <span class="pre">'package',</span> <span class="pre">'param',</span> <span class="pre">'property',</span>
+<span class="pre">'property-read',</span> <span class="pre">'property-write',</span> <span class="pre">'return',</span> <span class="pre">'see',</span> <span class="pre">'since',</span> <span class="pre">'source',</span>
+<span class="pre">'subpackage',</span> <span class="pre">'throws',</span> <span class="pre">'todo',</span> <span class="pre">'TODO',</span> <span class="pre">'usedBy',</span> <span class="pre">'uses',</span> <span class="pre">'var',</span>
+<span class="pre">'version',</span> <span class="pre">'after',</span> <span class="pre">'afterClass',</span> <span class="pre">'backupGlobals',</span>
+<span class="pre">'backupStaticAttributes',</span> <span class="pre">'before',</span> <span class="pre">'beforeClass',</span>
+<span class="pre">'codeCoverageIgnore',</span> <span class="pre">'codeCoverageIgnoreStart',</span>
+<span class="pre">'codeCoverageIgnoreEnd',</span> <span class="pre">'covers',</span> <span class="pre">'coversDefaultClass',</span>
+<span class="pre">'coversNothing',</span> <span class="pre">'dataProvider',</span> <span class="pre">'depends',</span> <span class="pre">'expectedException',</span>
+<span class="pre">'expectedExceptionCode',</span> <span class="pre">'expectedExceptionMessage',</span>
+<span class="pre">'expectedExceptionMessageRegExp',</span> <span class="pre">'group',</span> <span class="pre">'large',</span> <span class="pre">'medium',</span>
+<span class="pre">'preserveGlobalState',</span> <span class="pre">'requires',</span> <span class="pre">'runTestsInSeparateProcesses',</span>
+<span class="pre">'runInSeparateProcess',</span> <span class="pre">'small',</span> <span class="pre">'test',</span> <span class="pre">'testdox',</span> <span class="pre">'ticket',</span> <span class="pre">'uses',</span>
+<span class="pre">'SuppressWarnings',</span> <span class="pre">'noinspection',</span> <span class="pre">'package_version',</span> <span class="pre">'enduml',</span>
+<span class="pre">'startuml',</span> <span class="pre">'fix',</span> <span class="pre">'FIXME',</span> <span class="pre">'fixme',</span> <span class="pre">'override']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>elseif</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>The keyword <code class="docutils literal"><span class="pre">elseif</span></code> should be used instead of <code class="docutils literal"><span class="pre">else</span> <span class="pre">if</span></code> so that all
+control keywords look like single words.</p>
+</li>
+<li><p class="first"><strong>encoding</strong> [&#64;PSR1, &#64;PSR2, &#64;Symfony]</p>
+<p>PHP code MUST use only UTF-8 without BOM (remove BOM).</p>
+</li>
+<li><p class="first"><strong>ereg_to_preg</strong> [&#64;Symfony:risky]</p>
+<p>Replace deprecated <code class="docutils literal"><span class="pre">ereg</span></code> regular expression functions with <code class="docutils literal"><span class="pre">preg</span></code>.</p>
+<p><em>Risky rule: risky if the ``ereg`` function is overridden.</em></p>
+</li>
+<li><p class="first"><strong>error_suppression</strong> [&#64;Symfony:risky]</p>
+<p>Error control operator should be added to deprecation notices and/or
+removed from other cases.</p>
+<p><em>Risky rule: risky because adding/removing ``&#64;`` might cause changes to code behaviour or if ``trigger_error`` function is overridden.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">mute_deprecation_error</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether to add <code class="docutils literal"><span class="pre">&#64;</span></code> in deprecation
+notices; defaults to <code class="docutils literal"><span class="pre">true</span></code></li>
+<li><code class="docutils literal"><span class="pre">noise_remaining_usages</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether to remove <code class="docutils literal"><span class="pre">&#64;</span></code> in remaining
+usages; defaults to <code class="docutils literal"><span class="pre">false</span></code></li>
+<li><code class="docutils literal"><span class="pre">noise_remaining_usages_exclude</span></code> (<code class="docutils literal"><span class="pre">array</span></code>): list of global functions to
+exclude from removing <code class="docutils literal"><span class="pre">&#64;</span></code>; defaults to <code class="docutils literal"><span class="pre">[]</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>escape_implicit_backslashes</strong></p>
+<p>Escape implicit backslashes in strings and heredocs to ease the
+understanding of which are special chars interpreted by PHP and which
+not.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">double_quoted</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether to fix double-quoted strings; defaults to
+<code class="docutils literal"><span class="pre">true</span></code></li>
+<li><code class="docutils literal"><span class="pre">heredoc_syntax</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether to fix heredoc syntax; defaults to <code class="docutils literal"><span class="pre">true</span></code></li>
+<li><code class="docutils literal"><span class="pre">single_quoted</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether to fix single-quoted strings; defaults to
+<code class="docutils literal"><span class="pre">false</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>explicit_indirect_variable</strong></p>
+<p>Add curly braces to indirect variables to make them clear to understand.
+Requires PHP &gt;= 7.0.</p>
+</li>
+<li><p class="first"><strong>explicit_string_variable</strong></p>
+<p>Converts implicit variables into explicit ones in double-quoted strings
+or heredoc syntax.</p>
+</li>
+<li><p class="first"><strong>final_internal_class</strong></p>
+<p>Internal classes should be <code class="docutils literal"><span class="pre">final</span></code>.</p>
+<p><em>Risky rule: changing classes to ``final`` might cause code execution to break.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">annotation-black-list</span></code> (<code class="docutils literal"><span class="pre">array</span></code>): class level annotations tags that must be
+omitted to fix the class, even if all of the white list ones are used
+as well. (case insensitive); defaults to <code class="docutils literal"><span class="pre">['&#64;final',</span> <span class="pre">'&#64;Entity',</span> <span class="pre">'&#64;ORM']</span></code></li>
+<li><code class="docutils literal"><span class="pre">annotation-white-list</span></code> (<code class="docutils literal"><span class="pre">array</span></code>): class level annotations tags that must be
+set in order to fix the class. (case insensitive); defaults to
+<code class="docutils literal"><span class="pre">['&#64;internal']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>fopen_flag_order</strong> [&#64;Symfony:risky]</p>
+<p>Order the flags in <code class="docutils literal"><span class="pre">fopen</span></code> calls, <code class="docutils literal"><span class="pre">b</span></code> and <code class="docutils literal"><span class="pre">t</span></code> must be last.</p>
+<p><em>Risky rule: risky when the function ``fopen`` is overridden.</em></p>
+</li>
+<li><p class="first"><strong>fopen_flags</strong> [&#64;Symfony:risky]</p>
+<p>The flags in <code class="docutils literal"><span class="pre">fopen</span></code> calls must contain <code class="docutils literal"><span class="pre">b</span></code> and must omit <code class="docutils literal"><span class="pre">t</span></code>.</p>
+<p><em>Risky rule: risky when the function ``fopen`` is overridden.</em></p>
+</li>
+<li><p class="first"><strong>full_opening_tag</strong> [&#64;PSR1, &#64;PSR2, &#64;Symfony]</p>
+<p>PHP code must use the long <code class="docutils literal"><span class="pre">&lt;?php</span></code> tags or short-echo <code class="docutils literal"><span class="pre">&lt;?=</span></code> tags and not
+other tag variations.</p>
+</li>
+<li><p class="first"><strong>fully_qualified_strict_types</strong></p>
+<p>Transforms imported FQCN parameters and return types in function
+arguments to short version.</p>
+</li>
+<li><p class="first"><strong>function_declaration</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>Spaces should be properly placed in a function declaration.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">closure_function_spacing</span></code> (<code class="docutils literal"><span class="pre">'none'</span></code>, <code class="docutils literal"><span class="pre">'one'</span></code>): spacing to use before open
+parenthesis for closures; defaults to <code class="docutils literal"><span class="pre">'one'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>function_to_constant</strong> [&#64;Symfony:risky]</p>
+<p>Replace core functions calls returning constants with the constants.</p>
+<p><em>Risky rule: risky when any of the configured functions to replace are overridden.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">functions</span></code> (a subset of <code class="docutils literal"><span class="pre">['get_called_class',</span> <span class="pre">'get_class',</span>
+<span class="pre">'php_sapi_name',</span> <span class="pre">'phpversion',</span> <span class="pre">'pi']</span></code>): list of function names to fix;
+defaults to <code class="docutils literal"><span class="pre">['get_class',</span> <span class="pre">'php_sapi_name',</span> <span class="pre">'phpversion',</span> <span class="pre">'pi']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>function_typehint_space</strong> [&#64;Symfony]</p>
+<p>Add missing space between function’s argument and its typehint.</p>
+</li>
+<li><p class="first"><strong>general_phpdoc_annotation_remove</strong></p>
+<p>Configured annotations should be omitted from PHPDoc.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">annotations</span></code> (<code class="docutils literal"><span class="pre">array</span></code>): list of annotations to remove, e.g. <code class="docutils literal"><span class="pre">[&quot;author&quot;]</span></code>;
+defaults to <code class="docutils literal"><span class="pre">[]</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>hash_to_slash_comment</strong></p>
+<p>Single line comments should use double slashes <code class="docutils literal"><span class="pre">//</span></code> and not hash <code class="docutils literal"><span class="pre">#</span></code>.
+DEPRECATED: use <code class="docutils literal"><span class="pre">single_line_comment_style</span></code> instead.</p>
+</li>
+<li><p class="first"><strong>header_comment</strong></p>
+<p>Add, replace or remove header comment.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">comment_type</span></code> (<code class="docutils literal"><span class="pre">'comment'</span></code>, <code class="docutils literal"><span class="pre">'PHPDoc'</span></code>): comment syntax type; defaults to
+<code class="docutils literal"><span class="pre">'comment'</span></code>; DEPRECATED alias: <code class="docutils literal"><span class="pre">commentType</span></code></li>
+<li><code class="docutils literal"><span class="pre">header</span></code> (<code class="docutils literal"><span class="pre">string</span></code>): proper header content; required</li>
+<li><code class="docutils literal"><span class="pre">location</span></code> (<code class="docutils literal"><span class="pre">'after_declare_strict'</span></code>, <code class="docutils literal"><span class="pre">'after_open'</span></code>): the location of the
+inserted header; defaults to <code class="docutils literal"><span class="pre">'after_declare_strict'</span></code></li>
+<li><code class="docutils literal"><span class="pre">separate</span></code> (<code class="docutils literal"><span class="pre">'both'</span></code>, <code class="docutils literal"><span class="pre">'bottom'</span></code>, <code class="docutils literal"><span class="pre">'none'</span></code>, <code class="docutils literal"><span class="pre">'top'</span></code>): whether the header should be
+separated from the file content with a new line; defaults to <code class="docutils literal"><span class="pre">'both'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>heredoc_to_nowdoc</strong></p>
+<p>Convert <code class="docutils literal"><span class="pre">heredoc</span></code> to <code class="docutils literal"><span class="pre">nowdoc</span></code> where possible.</p>
+</li>
+<li><p class="first"><strong>implode_call</strong> [&#64;Symfony:risky]</p>
+<p>Function <code class="docutils literal"><span class="pre">implode</span></code> must be called with 2 arguments in the documented
+order.</p>
+<p><em>Risky rule: risky when the function ``implode`` is overridden.</em></p>
+</li>
+<li><p class="first"><strong>include</strong> [&#64;Symfony]</p>
+<p>Include/Require and file path should be divided with a single space.
+File path should not be placed under brackets.</p>
+</li>
+<li><p class="first"><strong>increment_style</strong> [&#64;Symfony]</p>
+<p>Pre- or post-increment and decrement operators should be used if
+possible.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">style</span></code> (<code class="docutils literal"><span class="pre">'post'</span></code>, <code class="docutils literal"><span class="pre">'pre'</span></code>): whether to use pre- or post-increment and
+decrement operators; defaults to <code class="docutils literal"><span class="pre">'pre'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>indentation_type</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>Code MUST use configured indentation type.</p>
+</li>
+<li><p class="first"><strong>is_null</strong> [&#64;Symfony:risky]</p>
+<p>Replaces <code class="docutils literal"><span class="pre">is_null($var)</span></code> expression with <code class="docutils literal"><span class="pre">null</span> <span class="pre">===</span> <span class="pre">$var</span></code>.</p>
+<p><em>Risky rule: risky when the function ``is_null`` is overridden.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">use_yoda_style</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether Yoda style conditions should be used;
+defaults to <code class="docutils literal"><span class="pre">true</span></code>. DEPRECATED: use <code class="docutils literal"><span class="pre">yoda_style</span></code> fixer instead</li>
+</ul>
+</li>
+<li><p class="first"><strong>line_ending</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>All PHP files must use same line ending.</p>
+</li>
+<li><p class="first"><strong>linebreak_after_opening_tag</strong></p>
+<p>Ensure there is no code on the same line as the PHP open tag.</p>
+</li>
+<li><p class="first"><strong>list_syntax</strong></p>
+<p>List (<code class="docutils literal"><span class="pre">array</span></code> destructuring) assignment should be declared using the
+configured syntax. Requires PHP &gt;= 7.1.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">syntax</span></code> (<code class="docutils literal"><span class="pre">'long'</span></code>, <code class="docutils literal"><span class="pre">'short'</span></code>): whether to use the <code class="docutils literal"><span class="pre">long</span></code> or <code class="docutils literal"><span class="pre">short</span></code> <code class="docutils literal"><span class="pre">list</span></code>
+syntax; defaults to <code class="docutils literal"><span class="pre">'long'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>logical_operators</strong></p>
+<p>Use <code class="docutils literal"><span class="pre">&amp;&amp;</span></code> and <code class="docutils literal"><span class="pre">||</span></code> logical operators instead of <code class="docutils literal"><span class="pre">and</span></code> and <code class="docutils literal"><span class="pre">or</span></code>.</p>
+<p><em>Risky rule: risky, because you must double-check if using and/or with lower precedence was intentional.</em></p>
+</li>
+<li><p class="first"><strong>lowercase_cast</strong> [&#64;Symfony]</p>
+<p>Cast should be written in lower case.</p>
+</li>
+<li><p class="first"><strong>lowercase_constants</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>The PHP constants <code class="docutils literal"><span class="pre">true</span></code>, <code class="docutils literal"><span class="pre">false</span></code>, and <code class="docutils literal"><span class="pre">null</span></code> MUST be in lower case.</p>
+</li>
+<li><p class="first"><strong>lowercase_keywords</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>PHP keywords MUST be in lower case.</p>
+</li>
+<li><p class="first"><strong>lowercase_static_reference</strong> [&#64;Symfony]</p>
+<p>Class static references <code class="docutils literal"><span class="pre">self</span></code>, <code class="docutils literal"><span class="pre">static</span></code> and <code class="docutils literal"><span class="pre">parent</span></code> MUST be in lower
+case.</p>
+</li>
+<li><p class="first"><strong>magic_constant_casing</strong> [&#64;Symfony]</p>
+<p>Magic constants should be referred to using the correct casing.</p>
+</li>
+<li><p class="first"><strong>magic_method_casing</strong> [&#64;Symfony]</p>
+<p>Magic method definitions and calls must be using the correct casing.</p>
+</li>
+<li><p class="first"><strong>mb_str_functions</strong></p>
+<p>Replace non multibyte-safe functions with corresponding mb function.</p>
+<p><em>Risky rule: risky when any of the functions are overridden.</em></p>
+</li>
+<li><p class="first"><strong>method_argument_space</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>In method arguments and method call, there MUST NOT be a space before
+each comma and there MUST be one space after each comma. Argument lists
+MAY be split across multiple lines, where each subsequent line is
+indented once. When doing so, the first item in the list MUST be on the
+next line, and there MUST be only one argument per line.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">ensure_fully_multiline</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): ensure every argument of a multiline
+argument list is on its own line; defaults to <code class="docutils literal"><span class="pre">false</span></code>. DEPRECATED: use
+option <code class="docutils literal"><span class="pre">on_multiline</span></code> instead</li>
+<li><code class="docutils literal"><span class="pre">keep_multiple_spaces_after_comma</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether keep multiple spaces
+after comma; defaults to <code class="docutils literal"><span class="pre">false</span></code></li>
+<li><code class="docutils literal"><span class="pre">on_multiline</span></code> (<code class="docutils literal"><span class="pre">'ensure_fully_multiline'</span></code>, <code class="docutils literal"><span class="pre">'ensure_single_line'</span></code>, <code class="docutils literal"><span class="pre">'ignore'</span></code>):
+defines how to handle function arguments lists that contain newlines;
+defaults to <code class="docutils literal"><span class="pre">'ignore'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>method_chaining_indentation</strong></p>
+<p>Method chaining MUST be properly indented. Method chaining with
+different levels of indentation is not supported.</p>
+</li>
+<li><p class="first"><strong>method_separation</strong></p>
+<p>Methods must be separated with one blank line. DEPRECATED: use
+<code class="docutils literal"><span class="pre">class_attributes_separation</span></code> instead.</p>
+</li>
+<li><p class="first"><strong>modernize_types_casting</strong> [&#64;Symfony:risky]</p>
+<p>Replaces <code class="docutils literal"><span class="pre">intval</span></code>, <code class="docutils literal"><span class="pre">floatval</span></code>, <code class="docutils literal"><span class="pre">doubleval</span></code>, <code class="docutils literal"><span class="pre">strval</span></code> and <code class="docutils literal"><span class="pre">boolval</span></code>
+function calls with according type casting operator.</p>
+<p><em>Risky rule: risky if any of the functions ``intval``, ``floatval``, ``doubleval``, ``strval`` or ``boolval`` are overridden.</em></p>
+</li>
+<li><p class="first"><strong>multiline_comment_opening_closing</strong></p>
+<p>DocBlocks must start with two asterisks, multiline comments must start
+with a single asterisk, after the opening slash. Both must end with a
+single asterisk before the closing slash.</p>
+</li>
+<li><p class="first"><strong>multiline_whitespace_before_semicolons</strong></p>
+<p>Forbid multi-line whitespace before the closing semicolon or move the
+semicolon to the new line for chained calls.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">strategy</span></code> (<code class="docutils literal"><span class="pre">'new_line_for_chained_calls'</span></code>, <code class="docutils literal"><span class="pre">'no_multi_line'</span></code>): forbid
+multi-line whitespace or move the semicolon to the new line for chained
+calls; defaults to <code class="docutils literal"><span class="pre">'no_multi_line'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>native_constant_invocation</strong> [&#64;Symfony:risky]</p>
+<p>Add leading <code class="docutils literal"><span class="pre">\</span></code> before constant invocation of internal constant to speed
+up resolving. Constant name match is case-sensitive, except for <code class="docutils literal"><span class="pre">null</span></code>,
+<code class="docutils literal"><span class="pre">false</span></code> and <code class="docutils literal"><span class="pre">true</span></code>.</p>
+<p><em>Risky rule: risky when any of the constants are namespaced or overridden.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">exclude</span></code> (<code class="docutils literal"><span class="pre">array</span></code>): list of constants to ignore; defaults to <code class="docutils literal"><span class="pre">['null',</span>
+<span class="pre">'false',</span> <span class="pre">'true']</span></code></li>
+<li><code class="docutils literal"><span class="pre">fix_built_in</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether to fix constants returned by
+<code class="docutils literal"><span class="pre">get_defined_constants</span></code>. User constants are not accounted in this list
+and must be specified in the include one; defaults to <code class="docutils literal"><span class="pre">true</span></code></li>
+<li><code class="docutils literal"><span class="pre">include</span></code> (<code class="docutils literal"><span class="pre">array</span></code>): list of additional constants to fix; defaults to <code class="docutils literal"><span class="pre">[]</span></code></li>
+<li><code class="docutils literal"><span class="pre">scope</span></code> (<code class="docutils literal"><span class="pre">'all'</span></code>, <code class="docutils literal"><span class="pre">'namespaced'</span></code>): only fix constant invocations that are made
+within a namespace or fix all; defaults to <code class="docutils literal"><span class="pre">'all'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>native_function_casing</strong> [&#64;Symfony]</p>
+<p>Function defined by PHP should be called using the correct casing.</p>
+</li>
+<li><p class="first"><strong>native_function_invocation</strong> [&#64;Symfony:risky]</p>
+<p>Add leading <code class="docutils literal"><span class="pre">\</span></code> before function invocation to speed up resolving.</p>
+<p><em>Risky rule: risky when any of the functions are overridden.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">exclude</span></code> (<code class="docutils literal"><span class="pre">array</span></code>): list of functions to ignore; defaults to <code class="docutils literal"><span class="pre">[]</span></code></li>
+<li><code class="docutils literal"><span class="pre">include</span></code> (<code class="docutils literal"><span class="pre">array</span></code>): list of function names or sets to fix. Defined sets are
+<code class="docutils literal"><span class="pre">&#64;internal</span></code> (all native functions), <code class="docutils literal"><span class="pre">&#64;all</span></code> (all global functions) and
+<code class="docutils literal"><span class="pre">&#64;compiler_optimized</span></code> (functions that are specially optimized by Zend);
+defaults to <code class="docutils literal"><span class="pre">['&#64;internal']</span></code></li>
+<li><code class="docutils literal"><span class="pre">scope</span></code> (<code class="docutils literal"><span class="pre">'all'</span></code>, <code class="docutils literal"><span class="pre">'namespaced'</span></code>): only fix function calls that are made
+within a namespace or fix all; defaults to <code class="docutils literal"><span class="pre">'all'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>new_with_braces</strong> [&#64;Symfony]</p>
+<p>All instances created with new keyword must be followed by braces.</p>
+</li>
+<li><p class="first"><strong>no_alias_functions</strong> [&#64;Symfony:risky]</p>
+<p>Master functions shall be used instead of aliases.</p>
+<p><em>Risky rule: risky when any of the alias functions are overridden.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">sets</span></code> (a subset of <code class="docutils literal"><span class="pre">['&#64;internal',</span> <span class="pre">'&#64;IMAP',</span> <span class="pre">'&#64;mbreg',</span> <span class="pre">'&#64;all']</span></code>): list of
+sets to fix. Defined sets are <code class="docutils literal"><span class="pre">&#64;internal</span></code> (native functions), <code class="docutils literal"><span class="pre">&#64;IMAP</span></code>
+(IMAP functions), <code class="docutils literal"><span class="pre">&#64;mbreg</span></code> (from <code class="docutils literal"><span class="pre">ext-mbstring</span></code>) <code class="docutils literal"><span class="pre">&#64;all</span></code> (all listed
+sets); defaults to <code class="docutils literal"><span class="pre">['&#64;internal',</span> <span class="pre">'&#64;IMAP']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>no_alternative_syntax</strong></p>
+<p>Replace control structure alternative syntax to use braces.</p>
+</li>
+<li><p class="first"><strong>no_binary_string</strong></p>
+<p>There should not be a binary flag before strings.</p>
+</li>
+<li><p class="first"><strong>no_blank_lines_after_class_opening</strong> [&#64;Symfony]</p>
+<p>There should be no empty lines after class opening brace.</p>
+</li>
+<li><p class="first"><strong>no_blank_lines_after_phpdoc</strong> [&#64;Symfony]</p>
+<p>There should not be blank lines between docblock and the documented
+element.</p>
+</li>
+<li><p class="first"><strong>no_blank_lines_before_namespace</strong></p>
+<p>There should be no blank lines before a namespace declaration.</p>
+</li>
+<li><p class="first"><strong>no_break_comment</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>There must be a comment when fall-through is intentional in a non-empty
+case body.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">comment_text</span></code> (<code class="docutils literal"><span class="pre">string</span></code>): the text to use in the added comment and to
+detect it; defaults to <code class="docutils literal"><span class="pre">'no</span> <span class="pre">break'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>no_closing_tag</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>The closing <code class="docutils literal"><span class="pre">?&gt;</span></code> tag MUST be omitted from files containing only PHP.</p>
+</li>
+<li><p class="first"><strong>no_empty_comment</strong> [&#64;Symfony]</p>
+<p>There should not be any empty comments.</p>
+</li>
+<li><p class="first"><strong>no_empty_phpdoc</strong> [&#64;Symfony]</p>
+<p>There should not be empty PHPDoc blocks.</p>
+</li>
+<li><p class="first"><strong>no_empty_statement</strong> [&#64;Symfony]</p>
+<p>Remove useless semicolon statements.</p>
+</li>
+<li><p class="first"><strong>no_extra_blank_lines</strong> [&#64;Symfony]</p>
+<p>Removes extra blank lines and/or blank lines following configuration.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">tokens</span></code> (a subset of <code class="docutils literal"><span class="pre">['break',</span> <span class="pre">'case',</span> <span class="pre">'continue',</span> <span class="pre">'curly_brace_block',</span>
+<span class="pre">'default',</span> <span class="pre">'extra',</span> <span class="pre">'parenthesis_brace_block',</span> <span class="pre">'return',</span>
+<span class="pre">'square_brace_block',</span> <span class="pre">'switch',</span> <span class="pre">'throw',</span> <span class="pre">'use',</span> <span class="pre">'useTrait',</span>
+<span class="pre">'use_trait']</span></code>): list of tokens to fix; defaults to <code class="docutils literal"><span class="pre">['extra']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>no_extra_consecutive_blank_lines</strong></p>
+<p>Removes extra blank lines and/or blank lines following configuration.
+DEPRECATED: use <code class="docutils literal"><span class="pre">no_extra_blank_lines</span></code> instead.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">tokens</span></code> (a subset of <code class="docutils literal"><span class="pre">['break',</span> <span class="pre">'case',</span> <span class="pre">'continue',</span> <span class="pre">'curly_brace_block',</span>
+<span class="pre">'default',</span> <span class="pre">'extra',</span> <span class="pre">'parenthesis_brace_block',</span> <span class="pre">'return',</span>
+<span class="pre">'square_brace_block',</span> <span class="pre">'switch',</span> <span class="pre">'throw',</span> <span class="pre">'use',</span> <span class="pre">'useTrait',</span>
+<span class="pre">'use_trait']</span></code>): list of tokens to fix; defaults to <code class="docutils literal"><span class="pre">['extra']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>no_homoglyph_names</strong> [&#64;Symfony:risky]</p>
+<p>Replace accidental usage of homoglyphs (non ascii characters) in names.</p>
+<p><em>Risky rule: renames classes and cannot rename the files. You might have string references to renamed code (``$$name``).</em></p>
+</li>
+<li><p class="first"><strong>no_leading_import_slash</strong> [&#64;Symfony]</p>
+<p>Remove leading slashes in <code class="docutils literal"><span class="pre">use</span></code> clauses.</p>
+</li>
+<li><p class="first"><strong>no_leading_namespace_whitespace</strong> [&#64;Symfony]</p>
+<p>The namespace declaration line shouldn’t contain leading whitespace.</p>
+</li>
+<li><p class="first"><strong>no_mixed_echo_print</strong> [&#64;Symfony]</p>
+<p>Either language construct <code class="docutils literal"><span class="pre">print</span></code> or <code class="docutils literal"><span class="pre">echo</span></code> should be used.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">use</span></code> (<code class="docutils literal"><span class="pre">'echo'</span></code>, <code class="docutils literal"><span class="pre">'print'</span></code>): the desired language construct; defaults to
+<code class="docutils literal"><span class="pre">'echo'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>no_multiline_whitespace_around_double_arrow</strong> [&#64;Symfony]</p>
+<p>Operator <code class="docutils literal"><span class="pre">=&gt;</span></code> should not be surrounded by multi-line whitespaces.</p>
+</li>
+<li><p class="first"><strong>no_multiline_whitespace_before_semicolons</strong></p>
+<p>Multi-line whitespace before closing semicolon are prohibited.
+DEPRECATED: use <code class="docutils literal"><span class="pre">multiline_whitespace_before_semicolons</span></code> instead.</p>
+</li>
+<li><p class="first"><strong>no_null_property_initialization</strong></p>
+<p>Properties MUST not be explicitly initialized with <code class="docutils literal"><span class="pre">null</span></code>.</p>
+</li>
+<li><p class="first"><strong>no_php4_constructor</strong></p>
+<p>Convert PHP4-style constructors to <code class="docutils literal"><span class="pre">__construct</span></code>.</p>
+<p><em>Risky rule: risky when old style constructor being fixed is overridden or overrides parent one.</em></p>
+</li>
+<li><p class="first"><strong>no_short_bool_cast</strong> [&#64;Symfony]</p>
+<p>Short cast <code class="docutils literal"><span class="pre">bool</span></code> using double exclamation mark should not be used.</p>
+</li>
+<li><p class="first"><strong>no_short_echo_tag</strong></p>
+<p>Replace short-echo <code class="docutils literal"><span class="pre">&lt;?=</span></code> with long format <code class="docutils literal"><span class="pre">&lt;?php</span> <span class="pre">echo</span></code> syntax.</p>
+</li>
+<li><p class="first"><strong>no_singleline_whitespace_before_semicolons</strong> [&#64;Symfony]</p>
+<p>Single-line whitespace before closing semicolon are prohibited.</p>
+</li>
+<li><p class="first"><strong>no_spaces_after_function_name</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>When making a method or function call, there MUST NOT be a space between
+the method or function name and the opening parenthesis.</p>
+</li>
+<li><p class="first"><strong>no_spaces_around_offset</strong> [&#64;Symfony]</p>
+<p>There MUST NOT be spaces around offset braces.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">positions</span></code> (a subset of <code class="docutils literal"><span class="pre">['inside',</span> <span class="pre">'outside']</span></code>): whether spacing should be
+fixed inside and/or outside the offset braces; defaults to <code class="docutils literal"><span class="pre">['inside',</span>
+<span class="pre">'outside']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>no_spaces_inside_parenthesis</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>There MUST NOT be a space after the opening parenthesis. There MUST NOT
+be a space before the closing parenthesis.</p>
+</li>
+<li><p class="first"><strong>no_superfluous_elseif</strong></p>
+<p>Replaces superfluous <code class="docutils literal"><span class="pre">elseif</span></code> with <code class="docutils literal"><span class="pre">if</span></code>.</p>
+</li>
+<li><p class="first"><strong>no_superfluous_phpdoc_tags</strong></p>
+<p>Removes <code class="docutils literal"><span class="pre">&#64;param</span></code> and <code class="docutils literal"><span class="pre">&#64;return</span></code> tags that don’t provide any useful
+information.</p>
+</li>
+<li><p class="first"><strong>no_trailing_comma_in_list_call</strong> [&#64;Symfony]</p>
+<p>Remove trailing commas in list function calls.</p>
+</li>
+<li><p class="first"><strong>no_trailing_comma_in_singleline_array</strong> [&#64;Symfony]</p>
+<p>PHP single-line arrays should not have trailing comma.</p>
+</li>
+<li><p class="first"><strong>no_trailing_whitespace</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>Remove trailing whitespace at the end of non-blank lines.</p>
+</li>
+<li><p class="first"><strong>no_trailing_whitespace_in_comment</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>There MUST be no trailing spaces inside comment or PHPDoc.</p>
+</li>
+<li><p class="first"><strong>no_unneeded_control_parentheses</strong> [&#64;Symfony]</p>
+<p>Removes unneeded parentheses around control statements.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">statements</span></code> (<code class="docutils literal"><span class="pre">array</span></code>): list of control statements to fix; defaults to
+<code class="docutils literal"><span class="pre">['break',</span> <span class="pre">'clone',</span> <span class="pre">'continue',</span> <span class="pre">'echo_print',</span> <span class="pre">'return',</span> <span class="pre">'switch_case',</span>
+<span class="pre">'yield']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>no_unneeded_curly_braces</strong> [&#64;Symfony]</p>
+<p>Removes unneeded curly braces that are superfluous and aren’t part of a
+control structure’s body.</p>
+</li>
+<li><p class="first"><strong>no_unneeded_final_method</strong> [&#64;Symfony]</p>
+<p>A final class must not have final methods.</p>
+</li>
+<li><p class="first"><strong>no_unreachable_default_argument_value</strong></p>
+<p>In function arguments there must not be arguments with default values
+before non-default ones.</p>
+<p><em>Risky rule: modifies the signature of functions; therefore risky when using systems (such as some Symfony components) that rely on those (for example through reflection).</em></p>
+</li>
+<li><p class="first"><strong>no_unset_on_property</strong></p>
+<p>Properties should be set to <code class="docutils literal"><span class="pre">null</span></code> instead of using <code class="docutils literal"><span class="pre">unset</span></code>.</p>
+<p><em>Risky rule: changing variables to ``null`` instead of unsetting them will mean they still show up when looping over class variables.</em></p>
+</li>
+<li><p class="first"><strong>no_unused_imports</strong> [&#64;Symfony]</p>
+<p>Unused <code class="docutils literal"><span class="pre">use</span></code> statements must be removed.</p>
+</li>
+<li><p class="first"><strong>no_useless_else</strong></p>
+<p>There should not be useless <code class="docutils literal"><span class="pre">else</span></code> cases.</p>
+</li>
+<li><p class="first"><strong>no_useless_return</strong></p>
+<p>There should not be an empty <code class="docutils literal"><span class="pre">return</span></code> statement at the end of a
+function.</p>
+</li>
+<li><p class="first"><strong>no_whitespace_before_comma_in_array</strong> [&#64;Symfony]</p>
+<p>In array declaration, there MUST NOT be a whitespace before each comma.</p>
+</li>
+<li><p class="first"><strong>no_whitespace_in_blank_line</strong> [&#64;Symfony]</p>
+<p>Remove trailing whitespace at the end of blank lines.</p>
+</li>
+<li><p class="first"><strong>non_printable_character</strong> [&#64;Symfony:risky, &#64;PHP70Migration:risky, &#64;PHP71Migration:risky]</p>
+<p>Remove Zero-width space (ZWSP), Non-breaking space (NBSP) and other
+invisible unicode symbols.</p>
+<p><em>Risky rule: risky when strings contain intended invisible characters.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">use_escape_sequences_in_strings</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether characters should be
+replaced with escape sequences in strings; defaults to <code class="docutils literal"><span class="pre">false</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>normalize_index_brace</strong> [&#64;Symfony]</p>
+<p>Array index should always be written by using square braces.</p>
+</li>
+<li><p class="first"><strong>not_operator_with_space</strong></p>
+<p>Logical NOT operators (<code class="docutils literal"><span class="pre">!</span></code>) should have leading and trailing
+whitespaces.</p>
+</li>
+<li><p class="first"><strong>not_operator_with_successor_space</strong></p>
+<p>Logical NOT operators (<code class="docutils literal"><span class="pre">!</span></code>) should have one trailing whitespace.</p>
+</li>
+<li><p class="first"><strong>object_operator_without_whitespace</strong> [&#64;Symfony]</p>
+<p>There should not be space before or after object <code class="docutils literal"><span class="pre">T_OBJECT_OPERATOR</span></code>
+<code class="docutils literal"><span class="pre">-&gt;</span></code>.</p>
+</li>
+<li><p class="first"><strong>ordered_class_elements</strong></p>
+<p>Orders the elements of classes/interfaces/traits.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">order</span></code> (a subset of <code class="docutils literal"><span class="pre">['use_trait',</span> <span class="pre">'public',</span> <span class="pre">'protected',</span> <span class="pre">'private',</span>
+<span class="pre">'constant',</span> <span class="pre">'constant_public',</span> <span class="pre">'constant_protected',</span>
+<span class="pre">'constant_private',</span> <span class="pre">'property',</span> <span class="pre">'property_static',</span> <span class="pre">'property_public',</span>
+<span class="pre">'property_protected',</span> <span class="pre">'property_private',</span> <span class="pre">'property_public_static',</span>
+<span class="pre">'property_protected_static',</span> <span class="pre">'property_private_static',</span> <span class="pre">'method',</span>
+<span class="pre">'method_static',</span> <span class="pre">'method_public',</span> <span class="pre">'method_protected',</span> <span class="pre">'method_private',</span>
+<span class="pre">'method_public_static',</span> <span class="pre">'method_protected_static',</span>
+<span class="pre">'method_private_static',</span> <span class="pre">'construct',</span> <span class="pre">'destruct',</span> <span class="pre">'magic',</span> <span class="pre">'phpunit']</span></code>):
+list of strings defining order of elements; defaults to <code class="docutils literal"><span class="pre">['use_trait',</span>
+<span class="pre">'constant_public',</span> <span class="pre">'constant_protected',</span> <span class="pre">'constant_private',</span>
+<span class="pre">'property_public',</span> <span class="pre">'property_protected',</span> <span class="pre">'property_private',</span>
+<span class="pre">'construct',</span> <span class="pre">'destruct',</span> <span class="pre">'magic',</span> <span class="pre">'phpunit',</span> <span class="pre">'method_public',</span>
+<span class="pre">'method_protected',</span> <span class="pre">'method_private']</span></code></li>
+<li><code class="docutils literal"><span class="pre">sortAlgorithm</span></code> (<code class="docutils literal"><span class="pre">'alpha'</span></code>, <code class="docutils literal"><span class="pre">'none'</span></code>): how multiple occurrences of same type
+statements should be sorted; defaults to <code class="docutils literal"><span class="pre">'none'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>ordered_imports</strong></p>
+<p>Ordering <code class="docutils literal"><span class="pre">use</span></code> statements.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">imports_order</span></code> (<code class="docutils literal"><span class="pre">array</span></code>, <code class="docutils literal"><span class="pre">null</span></code>): defines the order of import types; defaults
+to <code class="docutils literal"><span class="pre">null</span></code>; DEPRECATED alias: <code class="docutils literal"><span class="pre">importsOrder</span></code></li>
+<li><code class="docutils literal"><span class="pre">sort_algorithm</span></code> (<code class="docutils literal"><span class="pre">'alpha'</span></code>, <code class="docutils literal"><span class="pre">'length'</span></code>, <code class="docutils literal"><span class="pre">'none'</span></code>): whether the statements
+should be sorted alphabetically or by length, or not sorted; defaults
+to <code class="docutils literal"><span class="pre">'alpha'</span></code>; DEPRECATED alias: <code class="docutils literal"><span class="pre">sortAlgorithm</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>php_unit_construct</strong> [&#64;Symfony:risky]</p>
+<p>PHPUnit assertion method calls like <code class="docutils literal"><span class="pre">-&gt;assertSame(true,</span> <span class="pre">$foo)</span></code> should be
+written with dedicated method like <code class="docutils literal"><span class="pre">-&gt;assertTrue($foo)</span></code>.</p>
+<p><em>Risky rule: fixer could be risky if one is overriding PHPUnit’s native methods.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">assertions</span></code> (a subset of <code class="docutils literal"><span class="pre">['assertSame',</span> <span class="pre">'assertEquals',</span>
+<span class="pre">'assertNotEquals',</span> <span class="pre">'assertNotSame']</span></code>): list of assertion methods to fix;
+defaults to <code class="docutils literal"><span class="pre">['assertEquals',</span> <span class="pre">'assertSame',</span> <span class="pre">'assertNotEquals',</span>
+<span class="pre">'assertNotSame']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>php_unit_dedicate_assert</strong> [&#64;PHPUnit30Migration:risky, &#64;PHPUnit32Migration:risky, &#64;PHPUnit35Migration:risky, &#64;PHPUnit43Migration:risky, &#64;PHPUnit48Migration:risky, &#64;PHPUnit50Migration:risky, &#64;PHPUnit52Migration:risky, &#64;PHPUnit54Migration:risky, &#64;PHPUnit55Migration:risky, &#64;PHPUnit56Migration:risky, &#64;PHPUnit57Migration:risky, &#64;PHPUnit60Migration:risky]</p>
+<p>PHPUnit assertions like <code class="docutils literal"><span class="pre">assertInternalType</span></code>, <code class="docutils literal"><span class="pre">assertFileExists</span></code>, should
+be used over <code class="docutils literal"><span class="pre">assertTrue</span></code>.</p>
+<p><em>Risky rule: fixer could be risky if one is overriding PHPUnit’s native methods.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">functions</span></code> (a subset of <code class="docutils literal"><span class="pre">['array_key_exists',</span> <span class="pre">'empty',</span> <span class="pre">'file_exists',</span>
+<span class="pre">'is_array',</span> <span class="pre">'is_bool',</span> <span class="pre">'is_callable',</span> <span class="pre">'is_double',</span> <span class="pre">'is_float',</span>
+<span class="pre">'is_infinite',</span> <span class="pre">'is_int',</span> <span class="pre">'is_integer',</span> <span class="pre">'is_long',</span> <span class="pre">'is_nan',</span> <span class="pre">'is_null',</span>
+<span class="pre">'is_numeric',</span> <span class="pre">'is_object',</span> <span class="pre">'is_real',</span> <span class="pre">'is_resource',</span> <span class="pre">'is_scalar',</span>
+<span class="pre">'is_string']</span></code>, <code class="docutils literal"><span class="pre">null</span></code>): list of assertions to fix (overrides <code class="docutils literal"><span class="pre">target</span></code>);
+defaults to <code class="docutils literal"><span class="pre">null</span></code>. DEPRECATED: use option <code class="docutils literal"><span class="pre">target</span></code> instead</li>
+<li><code class="docutils literal"><span class="pre">target</span></code> (<code class="docutils literal"><span class="pre">'3.0'</span></code>, <code class="docutils literal"><span class="pre">'3.5'</span></code>, <code class="docutils literal"><span class="pre">'5.0'</span></code>, <code class="docutils literal"><span class="pre">'5.6'</span></code>, <code class="docutils literal"><span class="pre">'newest'</span></code>): target version of
+PHPUnit; defaults to <code class="docutils literal"><span class="pre">'5.0'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>php_unit_expectation</strong> [&#64;PHPUnit52Migration:risky, &#64;PHPUnit54Migration:risky, &#64;PHPUnit55Migration:risky, &#64;PHPUnit56Migration:risky, &#64;PHPUnit57Migration:risky, &#64;PHPUnit60Migration:risky]</p>
+<p>Usages of <code class="docutils literal"><span class="pre">-&gt;setExpectedException*</span></code> methods MUST be replaced by
+<code class="docutils literal"><span class="pre">-&gt;expectException*</span></code> methods.</p>
+<p><em>Risky rule: risky when PHPUnit classes are overridden or not accessible, or when project has PHPUnit incompatibilities.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">target</span></code> (<code class="docutils literal"><span class="pre">'5.2'</span></code>, <code class="docutils literal"><span class="pre">'5.6'</span></code>, <code class="docutils literal"><span class="pre">'newest'</span></code>): target version of PHPUnit; defaults to
+<code class="docutils literal"><span class="pre">'newest'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>php_unit_fqcn_annotation</strong> [&#64;Symfony]</p>
+<p>PHPUnit annotations should be a FQCNs including a root namespace.</p>
+</li>
+<li><p class="first"><strong>php_unit_internal_class</strong></p>
+<p>All PHPUnit test classes should be marked as internal.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">types</span></code> (a subset of <code class="docutils literal"><span class="pre">['normal',</span> <span class="pre">'final',</span> <span class="pre">'abstract']</span></code>): what types of
+classes to mark as internal; defaults to <code class="docutils literal"><span class="pre">['normal',</span> <span class="pre">'final']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>php_unit_method_casing</strong></p>
+<p>Enforce camel (or snake) case for PHPUnit test methods, following
+configuration.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">case</span></code> (<code class="docutils literal"><span class="pre">'camel_case'</span></code>, <code class="docutils literal"><span class="pre">'snake_case'</span></code>): apply camel or snake case to test
+methods; defaults to <code class="docutils literal"><span class="pre">'camel_case'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>php_unit_mock</strong> [&#64;PHPUnit54Migration:risky, &#64;PHPUnit55Migration:risky, &#64;PHPUnit56Migration:risky, &#64;PHPUnit57Migration:risky, &#64;PHPUnit60Migration:risky]</p>
+<p>Usages of <code class="docutils literal"><span class="pre">-&gt;getMock</span></code> and
+<code class="docutils literal"><span class="pre">-&gt;getMockWithoutInvokingTheOriginalConstructor</span></code> methods MUST be
+replaced by <code class="docutils literal"><span class="pre">-&gt;createMock</span></code> or <code class="docutils literal"><span class="pre">-&gt;createPartialMock</span></code> methods.</p>
+<p><em>Risky rule: risky when PHPUnit classes are overridden or not accessible, or when project has PHPUnit incompatibilities.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">target</span></code> (<code class="docutils literal"><span class="pre">'5.4'</span></code>, <code class="docutils literal"><span class="pre">'5.5'</span></code>, <code class="docutils literal"><span class="pre">'newest'</span></code>): target version of PHPUnit; defaults to
+<code class="docutils literal"><span class="pre">'newest'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>php_unit_namespaced</strong> [&#64;PHPUnit48Migration:risky, &#64;PHPUnit50Migration:risky, &#64;PHPUnit52Migration:risky, &#64;PHPUnit54Migration:risky, &#64;PHPUnit55Migration:risky, &#64;PHPUnit56Migration:risky, &#64;PHPUnit57Migration:risky, &#64;PHPUnit60Migration:risky]</p>
+<p>PHPUnit classes MUST be used in namespaced version, eg
+<code class="docutils literal"><span class="pre">\PHPUnit\Framework\TestCase</span></code> instead of <code class="docutils literal"><span class="pre">\PHPUnit_Framework_TestCase</span></code>.</p>
+<p><em>Risky rule: risky when PHPUnit classes are overridden or not accessible, or when project has PHPUnit incompatibilities.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">target</span></code> (<code class="docutils literal"><span class="pre">'4.8'</span></code>, <code class="docutils literal"><span class="pre">'5.7'</span></code>, <code class="docutils literal"><span class="pre">'6.0'</span></code>, <code class="docutils literal"><span class="pre">'newest'</span></code>): target version of PHPUnit;
+defaults to <code class="docutils literal"><span class="pre">'newest'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>php_unit_no_expectation_annotation</strong> [&#64;PHPUnit32Migration:risky, &#64;PHPUnit35Migration:risky, &#64;PHPUnit43Migration:risky, &#64;PHPUnit48Migration:risky, &#64;PHPUnit50Migration:risky, &#64;PHPUnit52Migration:risky, &#64;PHPUnit54Migration:risky, &#64;PHPUnit55Migration:risky, &#64;PHPUnit56Migration:risky, &#64;PHPUnit57Migration:risky, &#64;PHPUnit60Migration:risky]</p>
+<p>Usages of <code class="docutils literal"><span class="pre">&#64;expectedException*</span></code> annotations MUST be replaced by
+<code class="docutils literal"><span class="pre">-&gt;setExpectedException*</span></code> methods.</p>
+<p><em>Risky rule: risky when PHPUnit classes are overridden or not accessible, or when project has PHPUnit incompatibilities.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">target</span></code> (<code class="docutils literal"><span class="pre">'3.2'</span></code>, <code class="docutils literal"><span class="pre">'4.3'</span></code>, <code class="docutils literal"><span class="pre">'newest'</span></code>): target version of PHPUnit; defaults to
+<code class="docutils literal"><span class="pre">'newest'</span></code></li>
+<li><code class="docutils literal"><span class="pre">use_class_const</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): use ::class notation; defaults to <code class="docutils literal"><span class="pre">true</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>php_unit_ordered_covers</strong></p>
+<p>Order <code class="docutils literal"><span class="pre">&#64;covers</span></code> annotation of PHPUnit tests.</p>
+</li>
+<li><p class="first"><strong>php_unit_set_up_tear_down_visibility</strong></p>
+<p>Changes the visibility of the <code class="docutils literal"><span class="pre">setUp()</span></code> and <code class="docutils literal"><span class="pre">tearDown()</span></code> functions of
+PHPUnit to <code class="docutils literal"><span class="pre">protected</span></code>, to match the PHPUnit TestCase.</p>
+<p><em>Risky rule: this fixer may change functions named ``setUp()`` or ``tearDown()`` outside of PHPUnit tests, when a class is wrongly seen as a PHPUnit test.</em></p>
+</li>
+<li><p class="first"><strong>php_unit_strict</strong></p>
+<p>PHPUnit methods like <code class="docutils literal"><span class="pre">assertSame</span></code> should be used instead of
+<code class="docutils literal"><span class="pre">assertEquals</span></code>.</p>
+<p><em>Risky rule: risky when any of the functions are overridden or when testing object equality.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">assertions</span></code> (a subset of <code class="docutils literal"><span class="pre">['assertAttributeEquals',</span>
+<span class="pre">'assertAttributeNotEquals',</span> <span class="pre">'assertEquals',</span> <span class="pre">'assertNotEquals']</span></code>): list
+of assertion methods to fix; defaults to <code class="docutils literal"><span class="pre">['assertAttributeEquals',</span>
+<span class="pre">'assertAttributeNotEquals',</span> <span class="pre">'assertEquals',</span> <span class="pre">'assertNotEquals']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>php_unit_test_annotation</strong></p>
+<p>Adds or removes &#64;test annotations from tests, following configuration.</p>
+<p><em>Risky rule: this fixer may change the name of your tests, and could cause incompatibility with abstract classes or interfaces.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">case</span></code> (<code class="docutils literal"><span class="pre">'camel'</span></code>, <code class="docutils literal"><span class="pre">'snake'</span></code>): whether to camel or snake case when adding the
+test prefix; defaults to <code class="docutils literal"><span class="pre">'camel'</span></code>. DEPRECATED: use
+<code class="docutils literal"><span class="pre">php_unit_method_casing</span></code> fixer instead</li>
+<li><code class="docutils literal"><span class="pre">style</span></code> (<code class="docutils literal"><span class="pre">'annotation'</span></code>, <code class="docutils literal"><span class="pre">'prefix'</span></code>): whether to use the &#64;test annotation or
+not; defaults to <code class="docutils literal"><span class="pre">'prefix'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>php_unit_test_case_static_method_calls</strong></p>
+<p>Calls to <code class="docutils literal"><span class="pre">PHPUnit\Framework\TestCase</span></code> static methods must all be of the
+same type, either <code class="docutils literal"><span class="pre">$this-&gt;</span></code>, <code class="docutils literal"><span class="pre">self::</span></code> or <code class="docutils literal"><span class="pre">static::</span></code>.</p>
+<p><em>Risky rule: risky when PHPUnit methods are overridden or not accessible, or when project has PHPUnit incompatibilities.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">call_type</span></code> (<code class="docutils literal"><span class="pre">'self'</span></code>, <code class="docutils literal"><span class="pre">'static'</span></code>, <code class="docutils literal"><span class="pre">'this'</span></code>): the call type to use for referring
+to PHPUnit methods; defaults to <code class="docutils literal"><span class="pre">'static'</span></code></li>
+<li><code class="docutils literal"><span class="pre">methods</span></code> (<code class="docutils literal"><span class="pre">array</span></code>): dictionary of <code class="docutils literal"><span class="pre">method</span></code> =&gt; <code class="docutils literal"><span class="pre">call_type</span></code> values that
+differ from the default strategy; defaults to <code class="docutils literal"><span class="pre">[]</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>php_unit_test_class_requires_covers</strong></p>
+<p>Adds a default <code class="docutils literal"><span class="pre">&#64;coversNothing</span></code> annotation to PHPUnit test classes that
+have no <code class="docutils literal"><span class="pre">&#64;covers*</span></code> annotation.</p>
+</li>
+<li><p class="first"><strong>phpdoc_add_missing_param_annotation</strong></p>
+<p>PHPDoc should contain <code class="docutils literal"><span class="pre">&#64;param</span></code> for all params.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">only_untyped</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether to add missing <code class="docutils literal"><span class="pre">&#64;param</span></code> annotations for
+untyped parameters only; defaults to <code class="docutils literal"><span class="pre">true</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>phpdoc_align</strong> [&#64;Symfony]</p>
+<p>All items of the given phpdoc tags must be either left-aligned or (by
+default) aligned vertically.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">align</span></code> (<code class="docutils literal"><span class="pre">'left'</span></code>, <code class="docutils literal"><span class="pre">'vertical'</span></code>): align comments; defaults to <code class="docutils literal"><span class="pre">'vertical'</span></code></li>
+<li><code class="docutils literal"><span class="pre">tags</span></code> (a subset of <code class="docutils literal"><span class="pre">['param',</span> <span class="pre">'property',</span> <span class="pre">'return',</span> <span class="pre">'throws',</span> <span class="pre">'type',</span>
+<span class="pre">'var',</span> <span class="pre">'method']</span></code>): the tags that should be aligned; defaults to
+<code class="docutils literal"><span class="pre">['param',</span> <span class="pre">'return',</span> <span class="pre">'throws',</span> <span class="pre">'type',</span> <span class="pre">'var']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>phpdoc_annotation_without_dot</strong> [&#64;Symfony]</p>
+<p>PHPDoc annotation descriptions should not be a sentence.</p>
+</li>
+<li><p class="first"><strong>phpdoc_indent</strong> [&#64;Symfony]</p>
+<p>Docblocks should have the same indentation as the documented subject.</p>
+</li>
+<li><p class="first"><strong>phpdoc_inline_tag</strong> [&#64;Symfony]</p>
+<p>Fix PHPDoc inline tags, make <code class="docutils literal"><span class="pre">&#64;inheritdoc</span></code> always inline.</p>
+</li>
+<li><p class="first"><strong>phpdoc_no_access</strong> [&#64;Symfony]</p>
+<p><code class="docutils literal"><span class="pre">&#64;access</span></code> annotations should be omitted from PHPDoc.</p>
+</li>
+<li><p class="first"><strong>phpdoc_no_alias_tag</strong> [&#64;Symfony]</p>
+<p>No alias PHPDoc tags should be used.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">replacements</span></code> (<code class="docutils literal"><span class="pre">array</span></code>): mapping between replaced annotations with new
+ones; defaults to <code class="docutils literal"><span class="pre">['property-read'</span> <span class="pre">=&gt;</span> <span class="pre">'property',</span> <span class="pre">'property-write'</span> <span class="pre">=&gt;</span>
+<span class="pre">'property',</span> <span class="pre">'type'</span> <span class="pre">=&gt;</span> <span class="pre">'var',</span> <span class="pre">'link'</span> <span class="pre">=&gt;</span> <span class="pre">'see']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>phpdoc_no_empty_return</strong> [&#64;Symfony]</p>
+<p><code class="docutils literal"><span class="pre">&#64;return</span> <span class="pre">void</span></code> and <code class="docutils literal"><span class="pre">&#64;return</span> <span class="pre">null</span></code> annotations should be omitted from
+PHPDoc.</p>
+</li>
+<li><p class="first"><strong>phpdoc_no_package</strong> [&#64;Symfony]</p>
+<p><code class="docutils literal"><span class="pre">&#64;package</span></code> and <code class="docutils literal"><span class="pre">&#64;subpackage</span></code> annotations should be omitted from PHPDoc.</p>
+</li>
+<li><p class="first"><strong>phpdoc_no_useless_inheritdoc</strong> [&#64;Symfony]</p>
+<p>Classy that does not inherit must not have <code class="docutils literal"><span class="pre">&#64;inheritdoc</span></code> tags.</p>
+</li>
+<li><p class="first"><strong>phpdoc_order</strong></p>
+<p>Annotations in PHPDoc should be ordered so that <code class="docutils literal"><span class="pre">&#64;param</span></code> annotations
+come first, then <code class="docutils literal"><span class="pre">&#64;throws</span></code> annotations, then <code class="docutils literal"><span class="pre">&#64;return</span></code> annotations.</p>
+</li>
+<li><p class="first"><strong>phpdoc_return_self_reference</strong> [&#64;Symfony]</p>
+<p>The type of <code class="docutils literal"><span class="pre">&#64;return</span></code> annotations of methods returning a reference to
+itself must the configured one.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">replacements</span></code> (<code class="docutils literal"><span class="pre">array</span></code>): mapping between replaced return types with new
+ones; defaults to <code class="docutils literal"><span class="pre">['this'</span> <span class="pre">=&gt;</span> <span class="pre">'$this',</span> <span class="pre">'&#64;this'</span> <span class="pre">=&gt;</span> <span class="pre">'$this',</span> <span class="pre">'$self'</span> <span class="pre">=&gt;</span>
+<span class="pre">'self',</span> <span class="pre">'&#64;self'</span> <span class="pre">=&gt;</span> <span class="pre">'self',</span> <span class="pre">'$static'</span> <span class="pre">=&gt;</span> <span class="pre">'static',</span> <span class="pre">'&#64;static'</span> <span class="pre">=&gt;</span>
+<span class="pre">'static']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>phpdoc_scalar</strong> [&#64;Symfony]</p>
+<p>Scalar types should always be written in the same form. <code class="docutils literal"><span class="pre">int</span></code> not
+<code class="docutils literal"><span class="pre">integer</span></code>, <code class="docutils literal"><span class="pre">bool</span></code> not <code class="docutils literal"><span class="pre">boolean</span></code>, <code class="docutils literal"><span class="pre">float</span></code> not <code class="docutils literal"><span class="pre">real</span></code> or <code class="docutils literal"><span class="pre">double</span></code>.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">types</span></code> (a subset of <code class="docutils literal"><span class="pre">['boolean',</span> <span class="pre">'callback',</span> <span class="pre">'double',</span> <span class="pre">'integer',</span> <span class="pre">'real',</span>
+<span class="pre">'str']</span></code>): a map of types to fix; defaults to <code class="docutils literal"><span class="pre">['boolean',</span> <span class="pre">'double',</span>
+<span class="pre">'integer',</span> <span class="pre">'real',</span> <span class="pre">'str']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>phpdoc_separation</strong> [&#64;Symfony]</p>
+<p>Annotations in PHPDoc should be grouped together so that annotations of
+the same type immediately follow each other, and annotations of a
+different type are separated by a single blank line.</p>
+</li>
+<li><p class="first"><strong>phpdoc_single_line_var_spacing</strong> [&#64;Symfony]</p>
+<p>Single line <code class="docutils literal"><span class="pre">&#64;var</span></code> PHPDoc should have proper spacing.</p>
+</li>
+<li><p class="first"><strong>phpdoc_summary</strong> [&#64;Symfony]</p>
+<p>PHPDoc summary should end in either a full stop, exclamation mark, or
+question mark.</p>
+</li>
+<li><p class="first"><strong>phpdoc_to_comment</strong> [&#64;Symfony]</p>
+<p>Docblocks should only be used on structural elements.</p>
+</li>
+<li><p class="first"><strong>phpdoc_to_return_type</strong></p>
+<p>EXPERIMENTAL: Takes <code class="docutils literal"><span class="pre">&#64;return</span></code> annotation of non-mixed types and adjusts
+accordingly the function signature. Requires PHP &gt;= 7.0.</p>
+<p><em>Risky rule: [1] This rule is EXPERIMENTAL and is not covered with backward compatibility promise. [2] ``&#64;return`` annotation is mandatory for the fixer to make changes, signatures of methods without it (no docblock, inheritdocs) will not be fixed. [3] Manual actions are required if inherited signatures are not properly documented. [4] ``&#64;inheritdocs`` support is under construction.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">scalar_types</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): fix also scalar types; may have unexpected
+behaviour due to PHP bad type coercion system; defaults to <code class="docutils literal"><span class="pre">true</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>phpdoc_trim</strong> [&#64;Symfony]</p>
+<p>PHPDoc should start and end with content, excluding the very first and
+last line of the docblocks.</p>
+</li>
+<li><p class="first"><strong>phpdoc_trim_consecutive_blank_line_separation</strong></p>
+<p>Removes extra blank lines after summary and after description in PHPDoc.</p>
+</li>
+<li><p class="first"><strong>phpdoc_types</strong> [&#64;Symfony]</p>
+<p>The correct case must be used for standard PHP types in PHPDoc.</p>
+</li>
+<li><p class="first"><strong>phpdoc_types_order</strong></p>
+<p>Sorts PHPDoc types.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">null_adjustment</span></code> (<code class="docutils literal"><span class="pre">'always_first'</span></code>, <code class="docutils literal"><span class="pre">'always_last'</span></code>, <code class="docutils literal"><span class="pre">'none'</span></code>): forces the
+position of <code class="docutils literal"><span class="pre">null</span></code> (overrides <code class="docutils literal"><span class="pre">sort_algorithm</span></code>); defaults to
+<code class="docutils literal"><span class="pre">'always_first'</span></code></li>
+<li><code class="docutils literal"><span class="pre">sort_algorithm</span></code> (<code class="docutils literal"><span class="pre">'alpha'</span></code>, <code class="docutils literal"><span class="pre">'none'</span></code>): the sorting algorithm to apply;
+defaults to <code class="docutils literal"><span class="pre">'alpha'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>phpdoc_var_without_name</strong> [&#64;Symfony]</p>
+<p><code class="docutils literal"><span class="pre">&#64;var</span></code> and <code class="docutils literal"><span class="pre">&#64;type</span></code> annotations should not contain the variable name.</p>
+</li>
+<li><p class="first"><strong>pow_to_exponentiation</strong> [&#64;PHP56Migration:risky, &#64;PHP70Migration:risky, &#64;PHP71Migration:risky]</p>
+<p>Converts <code class="docutils literal"><span class="pre">pow</span></code> to the <code class="docutils literal"><span class="pre">**</span></code> operator.</p>
+<p><em>Risky rule: risky when the function ``pow`` is overridden.</em></p>
+</li>
+<li><p class="first"><strong>pre_increment</strong></p>
+<p>Pre incrementation/decrementation should be used if possible.
+DEPRECATED: use <code class="docutils literal"><span class="pre">increment_style</span></code> instead.</p>
+</li>
+<li><p class="first"><strong>protected_to_private</strong> [&#64;Symfony]</p>
+<p>Converts <code class="docutils literal"><span class="pre">protected</span></code> variables and methods to <code class="docutils literal"><span class="pre">private</span></code> where possible.</p>
+</li>
+<li><p class="first"><strong>psr0</strong></p>
+<p>Classes must be in a path that matches their namespace, be at least one
+namespace deep and the class name should match the file name.</p>
+<p><em>Risky rule: this fixer may change your class name, which will break the code that is depended on old name.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">dir</span></code> (<code class="docutils literal"><span class="pre">string</span></code>): the directory where the project code is placed; defaults
+to <code class="docutils literal"><span class="pre">''</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>psr4</strong> [&#64;Symfony:risky]</p>
+<p>Class names should match the file name.</p>
+<p><em>Risky rule: this fixer may change your class name, which will break the code that is depended on old name.</em></p>
+</li>
+<li><p class="first"><strong>random_api_migration</strong> [&#64;PHP70Migration:risky, &#64;PHP71Migration:risky]</p>
+<p>Replaces <code class="docutils literal"><span class="pre">rand</span></code>, <code class="docutils literal"><span class="pre">srand</span></code>, <code class="docutils literal"><span class="pre">getrandmax</span></code> functions calls with their <code class="docutils literal"><span class="pre">mt_*</span></code>
+analogs.</p>
+<p><em>Risky rule: risky when the configured functions are overridden.</em></p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">replacements</span></code> (<code class="docutils literal"><span class="pre">array</span></code>): mapping between replaced functions with the new
+ones; defaults to <code class="docutils literal"><span class="pre">['getrandmax'</span> <span class="pre">=&gt;</span> <span class="pre">'mt_getrandmax',</span> <span class="pre">'rand'</span> <span class="pre">=&gt;</span>
+<span class="pre">'mt_rand',</span> <span class="pre">'srand'</span> <span class="pre">=&gt;</span> <span class="pre">'mt_srand']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>return_assignment</strong></p>
+<p>Local, dynamic and directly referenced variables should not be assigned
+and directly returned by a function or method.</p>
+</li>
+<li><p class="first"><strong>return_type_declaration</strong> [&#64;Symfony]</p>
+<p>There should be one or no space before colon, and one space after it in
+return type declarations, according to configuration.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">space_before</span></code> (<code class="docutils literal"><span class="pre">'none'</span></code>, <code class="docutils literal"><span class="pre">'one'</span></code>): spacing to apply before colon; defaults to
+<code class="docutils literal"><span class="pre">'none'</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>self_accessor</strong> [&#64;Symfony:risky]</p>
+<p>Inside class or interface element <code class="docutils literal"><span class="pre">self</span></code> should be preferred to the
+class name itself.</p>
+<p><em>Risky rule: risky when using dynamic calls like get_called_class() or late static binding.</em></p>
+</li>
+<li><p class="first"><strong>semicolon_after_instruction</strong> [&#64;Symfony]</p>
+<p>Instructions must be terminated with a semicolon.</p>
+</li>
+<li><p class="first"><strong>set_type_to_cast</strong> [&#64;Symfony:risky]</p>
+<p>Cast shall be used, not <code class="docutils literal"><span class="pre">settype</span></code>.</p>
+<p><em>Risky rule: risky when the ``settype`` function is overridden or when used as the 2nd or 3rd expression in a ``for`` loop .</em></p>
+</li>
+<li><p class="first"><strong>short_scalar_cast</strong> [&#64;Symfony]</p>
+<p>Cast <code class="docutils literal"><span class="pre">(boolean)</span></code> and <code class="docutils literal"><span class="pre">(integer)</span></code> should be written as <code class="docutils literal"><span class="pre">(bool)</span></code> and
+<code class="docutils literal"><span class="pre">(int)</span></code>, <code class="docutils literal"><span class="pre">(double)</span></code> and <code class="docutils literal"><span class="pre">(real)</span></code> as <code class="docutils literal"><span class="pre">(float)</span></code>, <code class="docutils literal"><span class="pre">(binary)</span></code> as
+<code class="docutils literal"><span class="pre">(string)</span></code>.</p>
+</li>
+<li><p class="first"><strong>silenced_deprecation_error</strong></p>
+<p>Ensures deprecation notices are silenced. DEPRECATED: use
+<code class="docutils literal"><span class="pre">error_suppression</span></code> instead.</p>
+<p><em>Risky rule: silencing of deprecation errors might cause changes to code behaviour.</em></p>
+</li>
+<li><p class="first"><strong>simplified_null_return</strong></p>
+<p>A return statement wishing to return <code class="docutils literal"><span class="pre">void</span></code> should not return <code class="docutils literal"><span class="pre">null</span></code>.</p>
+</li>
+<li><p class="first"><strong>single_blank_line_at_eof</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>A PHP file without end tag must always end with a single empty line
+feed.</p>
+</li>
+<li><p class="first"><strong>single_blank_line_before_namespace</strong> [&#64;Symfony]</p>
+<p>There should be exactly one blank line before a namespace declaration.</p>
+</li>
+<li><p class="first"><strong>single_class_element_per_statement</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>There MUST NOT be more than one property or constant declared per
+statement.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">elements</span></code> (a subset of <code class="docutils literal"><span class="pre">['const',</span> <span class="pre">'property']</span></code>): list of strings which
+element should be modified; defaults to <code class="docutils literal"><span class="pre">['const',</span> <span class="pre">'property']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>single_import_per_statement</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>There MUST be one use keyword per declaration.</p>
+</li>
+<li><p class="first"><strong>single_line_after_imports</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>Each namespace use MUST go on its own line and there MUST be one blank
+line after the use statements block.</p>
+</li>
+<li><p class="first"><strong>single_line_comment_style</strong> [&#64;Symfony]</p>
+<p>Single-line comments and multi-line comments with only one line of
+actual content should use the <code class="docutils literal"><span class="pre">//</span></code> syntax.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">comment_types</span></code> (a subset of <code class="docutils literal"><span class="pre">['asterisk',</span> <span class="pre">'hash']</span></code>): list of comment types
+to fix; defaults to <code class="docutils literal"><span class="pre">['asterisk',</span> <span class="pre">'hash']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>single_quote</strong> [&#64;Symfony]</p>
+<p>Convert double quotes to single quotes for simple strings.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">strings_containing_single_quote_chars</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether to fix
+double-quoted strings that contains single-quotes; defaults to <code class="docutils literal"><span class="pre">false</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>space_after_semicolon</strong> [&#64;Symfony]</p>
+<p>Fix whitespace after a semicolon.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">remove_in_empty_for_expressions</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether spaces should be removed
+for empty <code class="docutils literal"><span class="pre">for</span></code> expressions; defaults to <code class="docutils literal"><span class="pre">false</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>standardize_increment</strong> [&#64;Symfony]</p>
+<p>Increment and decrement operators should be used if possible.</p>
+</li>
+<li><p class="first"><strong>standardize_not_equals</strong> [&#64;Symfony]</p>
+<p>Replace all <code class="docutils literal"><span class="pre">&lt;&gt;</span></code> with <code class="docutils literal"><span class="pre">!=</span></code>.</p>
+</li>
+<li><p class="first"><strong>static_lambda</strong></p>
+<p>Lambdas not (indirect) referencing <code class="docutils literal"><span class="pre">$this</span></code> must be declared <code class="docutils literal"><span class="pre">static</span></code>.</p>
+<p><em>Risky rule: risky when using “-&gt;bindTo” on lambdas without referencing to ``$this``.</em></p>
+</li>
+<li><p class="first"><strong>strict_comparison</strong></p>
+<p>Comparisons should be strict.</p>
+<p><em>Risky rule: changing comparisons to strict might change code behavior.</em></p>
+</li>
+<li><p class="first"><strong>strict_param</strong></p>
+<p>Functions should be used with <code class="docutils literal"><span class="pre">$strict</span></code> param set to <code class="docutils literal"><span class="pre">true</span></code>.</p>
+<p><em>Risky rule: risky when the fixed function is overridden or if the code relies on non-strict usage.</em></p>
+</li>
+<li><p class="first"><strong>string_line_ending</strong></p>
+<p>All multi-line strings must use correct line ending.</p>
+<p><em>Risky rule: changing the line endings of multi-line strings might affect string comparisons and outputs.</em></p>
+</li>
+<li><p class="first"><strong>switch_case_semicolon_to_colon</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>A case should be followed by a colon and not a semicolon.</p>
+</li>
+<li><p class="first"><strong>switch_case_space</strong> [&#64;PSR2, &#64;Symfony]</p>
+<p>Removes extra spaces between colon and case value.</p>
+</li>
+<li><p class="first"><strong>ternary_operator_spaces</strong> [&#64;Symfony]</p>
+<p>Standardize spaces around ternary operator.</p>
+</li>
+<li><p class="first"><strong>ternary_to_null_coalescing</strong> [&#64;PHP70Migration, &#64;PHP71Migration]</p>
+<p>Use <code class="docutils literal"><span class="pre">null</span></code> coalescing operator <code class="docutils literal"><span class="pre">??</span></code> where possible. Requires PHP &gt;= 7.0.</p>
+</li>
+<li><p class="first"><strong>trailing_comma_in_multiline_array</strong> [&#64;Symfony]</p>
+<p>PHP multi-line arrays should have a trailing comma.</p>
+</li>
+<li><p class="first"><strong>trim_array_spaces</strong> [&#64;Symfony]</p>
+<p>Arrays should be formatted like function/method arguments, without
+leading or trailing single line space.</p>
+</li>
+<li><p class="first"><strong>unary_operator_spaces</strong> [&#64;Symfony]</p>
+<p>Unary operators should be placed adjacent to their operands.</p>
+</li>
+<li><p class="first"><strong>visibility_required</strong> [&#64;PSR2, &#64;Symfony, &#64;PHP71Migration]</p>
+<p>Visibility MUST be declared on all properties and methods; <code class="docutils literal"><span class="pre">abstract</span></code>
+and <code class="docutils literal"><span class="pre">final</span></code> MUST be declared before the visibility; <code class="docutils literal"><span class="pre">static</span></code> MUST be
+declared after the visibility.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">elements</span></code> (a subset of <code class="docutils literal"><span class="pre">['property',</span> <span class="pre">'method',</span> <span class="pre">'const']</span></code>): the structural
+elements to fix (PHP &gt;= 7.1 required for <code class="docutils literal"><span class="pre">const</span></code>); defaults to
+<code class="docutils literal"><span class="pre">['property',</span> <span class="pre">'method']</span></code></li>
+</ul>
+</li>
+<li><p class="first"><strong>void_return</strong> [&#64;PHP71Migration:risky]</p>
+<p>Add void return type to functions with missing or empty return
+statements, but priority is given to <code class="docutils literal"><span class="pre">&#64;return</span></code> annotations. Requires
+PHP &gt;= 7.1.</p>
+<p><em>Risky rule: modifies the signature of functions.</em></p>
+</li>
+<li><p class="first"><strong>whitespace_after_comma_in_array</strong> [&#64;Symfony]</p>
+<p>In array declaration, there MUST be a whitespace after each comma.</p>
+</li>
+<li><p class="first"><strong>yoda_style</strong> [&#64;Symfony]</p>
+<p>Write conditions in Yoda style (<code class="docutils literal"><span class="pre">true</span></code>), non-Yoda style (<code class="docutils literal"><span class="pre">false</span></code>) or
+ignore those conditions (<code class="docutils literal"><span class="pre">null</span></code>) based on configuration.</p>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">always_move_variable</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>): whether variables should always be on non
+assignable side when applying Yoda style; defaults to <code class="docutils literal"><span class="pre">false</span></code></li>
+<li><code class="docutils literal"><span class="pre">equal</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>, <code class="docutils literal"><span class="pre">null</span></code>): style for equal (<code class="docutils literal"><span class="pre">==</span></code>, <code class="docutils literal"><span class="pre">!=</span></code>) statements; defaults to
+<code class="docutils literal"><span class="pre">true</span></code></li>
+<li><code class="docutils literal"><span class="pre">identical</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>, <code class="docutils literal"><span class="pre">null</span></code>): style for identical (<code class="docutils literal"><span class="pre">===</span></code>, <code class="docutils literal"><span class="pre">!==</span></code>) statements;
+defaults to <code class="docutils literal"><span class="pre">true</span></code></li>
+<li><code class="docutils literal"><span class="pre">less_and_greater</span></code> (<code class="docutils literal"><span class="pre">bool</span></code>, <code class="docutils literal"><span class="pre">null</span></code>): style for less and greater than (<code class="docutils literal"><span class="pre">&lt;</span></code>,
+<code class="docutils literal"><span class="pre">&lt;=</span></code>, <code class="docutils literal"><span class="pre">&gt;</span></code>, <code class="docutils literal"><span class="pre">&gt;=</span></code>) statements; defaults to <code class="docutils literal"><span class="pre">null</span></code></li>
+</ul>
+</li>
+</ul>
+<p>The <code class="docutils literal"><span class="pre">--dry-run</span></code> option displays the files that need to be
+fixed but without actually modifying them:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ php php-cs-fixer.phar fix /path/to/code --dry-run
+</pre></div>
+</div>
+</div>
+<div class="section" id="config-file">
+<h2>Config file<a class="headerlink" href="#config-file" title="Permalink to this headline">¶</a></h2>
+<p>Instead of using command line options to customize the rule, you can save the
+project configuration in a <code class="docutils literal"><span class="pre">.php_cs.dist</span></code> file in the root directory of your project.
+The file must return an instance of <a class="reference external" href="https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/v2.13.0/src/ConfigInterface.php">PhpCsFixer\ConfigInterface</a>
+which lets you configure the rules, the files and directories that
+need to be analyzed. You may also create <code class="docutils literal"><span class="pre">.php_cs</span></code> file, which is
+the local configuration that will be used instead of the project configuration. It
+is a good practice to add that file into your <code class="docutils literal"><span class="pre">.gitignore</span></code> file.
+With the <code class="docutils literal"><span class="pre">--config</span></code> option you can specify the path to the
+<code class="docutils literal"><span class="pre">.php_cs</span></code> file.</p>
+<p>The example below will add two rules to the default list of PSR2 set rules:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nv">$finder</span> <span class="o">=</span> <span class="nx">PhpCsFixer\Finder</span><span class="o">::</span><span class="na">create</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">exclude</span><span class="p">(</span><span class="s1">&#39;somedir&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">notPath</span><span class="p">(</span><span class="s1">&#39;src/Symfony/Component/Translation/Tests/fixtures/resources.php&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">in</span><span class="p">(</span><span class="no">__DIR__</span><span class="p">)</span>
+<span class="p">;</span>
+
+<span class="k">return</span> <span class="nx">PhpCsFixer\Config</span><span class="o">::</span><span class="na">create</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">setRules</span><span class="p">([</span>
+        <span class="s1">&#39;@PSR2&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+        <span class="s1">&#39;strict_param&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+        <span class="s1">&#39;array_syntax&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;syntax&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;short&#39;</span><span class="p">],</span>
+    <span class="p">])</span>
+    <span class="o">-&gt;</span><span class="na">setFinder</span><span class="p">(</span><span class="nv">$finder</span><span class="p">)</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>NOTE</strong>: <code class="docutils literal"><span class="pre">exclude</span></code> will work only for directories, so if you need to exclude file, try <code class="docutils literal"><span class="pre">notPath</span></code>.</p>
+<p>See <a class="reference external" href="https://symfony.com/doc/current/components/finder.html">Symfony\Finder</a>
+online documentation for other <cite>Finder</cite> methods.</p>
+<p>You may also use a blacklist for the rules instead of the above shown whitelist approach.
+The following example shows how to use all <code class="docutils literal"><span class="pre">Symfony</span></code> rules but the <code class="docutils literal"><span class="pre">full_opening_tag</span></code> rule.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nv">$finder</span> <span class="o">=</span> <span class="nx">PhpCsFixer\Finder</span><span class="o">::</span><span class="na">create</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">exclude</span><span class="p">(</span><span class="s1">&#39;somedir&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">in</span><span class="p">(</span><span class="no">__DIR__</span><span class="p">)</span>
+<span class="p">;</span>
+
+<span class="k">return</span> <span class="nx">PhpCsFixer\Config</span><span class="o">::</span><span class="na">create</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">setRules</span><span class="p">([</span>
+        <span class="s1">&#39;@Symfony&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+        <span class="s1">&#39;full_opening_tag&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+    <span class="p">])</span>
+    <span class="o">-&gt;</span><span class="na">setFinder</span><span class="p">(</span><span class="nv">$finder</span><span class="p">)</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+<p>You may want to use non-linux whitespaces in your project. Then you need to
+configure them in your config file.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">return</span> <span class="nx">PhpCsFixer\Config</span><span class="o">::</span><span class="na">create</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">setIndent</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">setLineEnding</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+<p>By using <code class="docutils literal"><span class="pre">--using-cache</span></code> option with <code class="docutils literal"><span class="pre">yes</span></code> or <code class="docutils literal"><span class="pre">no</span></code> you can set if the caching
+mechanism should be used.</p>
+</div>
+<div class="section" id="caching">
+<h2>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h2>
+<p>The caching mechanism is enabled by default. This will speed up further runs by
+fixing only files that were modified since the last run. The tool will fix all
+files if the tool version has changed or the list of rules has changed.
+Cache is supported only for tool downloaded as phar file or installed via
+composer.</p>
+<p>Cache can be disabled via <code class="docutils literal"><span class="pre">--using-cache</span></code> option or config file:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">return</span> <span class="nx">PhpCsFixer\Config</span><span class="o">::</span><span class="na">create</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">setUsingCache</span><span class="p">(</span><span class="k">false</span><span class="p">)</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+<p>Cache file can be specified via <code class="docutils literal"><span class="pre">--cache-file</span></code> option or config file:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">return</span> <span class="nx">PhpCsFixer\Config</span><span class="o">::</span><span class="na">create</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">setCacheFile</span><span class="p">(</span><span class="no">__DIR__</span><span class="o">.</span><span class="s1">&#39;/.php_cs.cache&#39;</span><span class="p">)</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-php-cs-fixer-on-ci">
+<h2>Using PHP CS Fixer on CI<a class="headerlink" href="#using-php-cs-fixer-on-ci" title="Permalink to this headline">¶</a></h2>
+<p>Require <code class="docutils literal"><span class="pre">friendsofphp/php-cs-fixer</span></code> as a <code class="docutils literal"><span class="pre">dev</span></code> dependency:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ./composer.phar require --dev friendsofphp/php-cs-fixer
+</pre></div>
+</div>
+<p>Then, add the following command to your CI:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nv">IFS</span><span class="o">=</span><span class="s1">&#39;</span>
+<span class="s1">$ &#39;</span>
+$ <span class="nv">CHANGED_FILES</span><span class="o">=</span><span class="k">$(</span>git diff --name-only --diff-filter<span class="o">=</span>ACMRTUXB <span class="s2">&quot;</span><span class="si">${</span><span class="nv">COMMIT_RANGE</span><span class="si">}</span><span class="s2">&quot;</span><span class="k">)</span>
+$ <span class="k">if</span> ! <span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">CHANGED_FILES</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">|</span> grep -qE <span class="s2">&quot;^(\\.php_cs(\\.dist)?|composer\\.lock)</span>$<span class="s2">&quot;</span><span class="p">;</span> <span class="k">then</span> <span class="nv">EXTRA_ARGS</span><span class="o">=</span><span class="k">$(</span><span class="nb">printf</span> -- <span class="s1">&#39;--path-mode=intersection\n--\n%s&#39;</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">CHANGED_FILES</span><span class="si">}</span><span class="s2">&quot;</span><span class="k">)</span><span class="p">;</span> <span class="k">else</span> <span class="nv">EXTRA_ARGS</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">;</span> <span class="k">fi</span>
+$ vendor/bin/php-cs-fixer fix --config<span class="o">=</span>.php_cs.dist -v --dry-run --stop-on-violation --using-cache<span class="o">=</span>no <span class="si">${</span><span class="nv">EXTRA_ARGS</span><span class="si">}</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal"><span class="pre">$COMMIT_RANGE</span></code> is your range of commits, eg <code class="docutils literal"><span class="pre">$TRAVIS_COMMIT_RANGE</span></code> or <code class="docutils literal"><span class="pre">HEAD~..HEAD</span></code>.</p>
+</div>
+<div class="section" id="exit-codes">
+<h2>Exit codes<a class="headerlink" href="#exit-codes" title="Permalink to this headline">¶</a></h2>
+<p>Exit code is built using following bit flags:</p>
+<ul class="simple">
+<li>0 OK.</li>
+<li>1 General error (or PHP minimal requirement not matched).</li>
+<li>4 Some files have invalid syntax (only in dry-run mode).</li>
+<li>8 Some files need fixing (only in dry-run mode).</li>
+<li>16 Configuration error of the application.</li>
+<li>32 Configuration error of a Fixer.</li>
+<li>64 Exception raised within the application.</li>
+</ul>
+<p>(applies to exit codes of the <cite>fix</cite> command only)</p>
+</div>
+<div class="section" id="helpers">
+<h2>Helpers<a class="headerlink" href="#helpers" title="Permalink to this headline">¶</a></h2>
+<p>Dedicated plugins exist for:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/Glavin001/atom-beautify">Atom</a></li>
+<li><a class="reference external" href="http://plugins.netbeans.org/plugin/49042/php-cs-fixer">NetBeans</a></li>
+<li><a class="reference external" href="https://medium.com/&#64;valeryan/how-to-configure-phpstorm-to-use-php-cs-fixer-1844991e521f">PhpStorm</a></li>
+<li><a class="reference external" href="https://github.com/benmatselby/sublime-phpcs">Sublime Text</a></li>
+<li><a class="reference external" href="https://github.com/stephpy/vim-php-cs-fixer">Vim</a></li>
+</ul>
+</div>
+<div class="section" id="contribute">
+<h2>Contribute<a class="headerlink" href="#contribute" title="Permalink to this headline">¶</a></h2>
+<p>The tool comes with quite a few built-in fixers, but everyone is more than
+welcome to <a class="reference external" href="https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/master/CONTRIBUTING.md">contribute</a> more of them.</p>
+<div class="section" id="fixers">
+<h3>Fixers<a class="headerlink" href="#fixers" title="Permalink to this headline">¶</a></h3>
+<p>A <em>fixer</em> is a class that tries to fix one CS issue (a <code class="docutils literal"><span class="pre">Fixer</span></code> class must
+implement <code class="docutils literal"><span class="pre">FixerInterface</span></code>).</p>
+</div>
+<div class="section" id="configs">
+<h3>Configs<a class="headerlink" href="#configs" title="Permalink to this headline">¶</a></h3>
+<p>A <em>config</em> knows about the CS rules and the files and directories that must be
+scanned by the tool when run in the directory of your project. It is useful for
+projects that follow a well-known directory structures (like for Symfony
+projects for instance).</p>
+</div>
+</div>
+<div class="section" id="who-is-behind-the-php-coding-standards-fixer">
+<h2>Who is behind the PHP Coding Standards Fixer?<a class="headerlink" href="#who-is-behind-the-php-coding-standards-fixer" title="Permalink to this headline">¶</a></h2>
+<p>The PHP Coding Standards Fixer is brought to you by <a class="reference external" href="http://fabien.potencier.org/">Fabien Potencier</a>, the creator of the Symfony framework, and <a class="reference external" href="https://github.com/keradus">Dariusz Rumiński</a>. It is released under the <a class="reference external" href="https://raw.github.com/FriendsOfPHP/PHP-CS-Fixer/master/LICENSE">MIT license</a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="ft">
+        <div class="content">
+          The <a href="_static/images/logo.png">logo</a> is &copy; 2010-2014 Sensio Labs
+        </div>
+      </div>
+  </body>
+</html>
